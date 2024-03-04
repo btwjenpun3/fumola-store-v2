@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Realm;
 
+use App\Http\Controllers\RedisController;
 use App\Models\Game;
 use App\Models\Harga;
 use Livewire\Component;
+use Illuminate\Support\Facades\Cache;
 
 class Produk extends Component
 {
@@ -15,7 +17,7 @@ class Produk extends Component
     public $profit_reseller = [];
 
     public $items = [];
-    public $reseller = [];
+    public $reseller = [];    
 
     public function status($id, $status) 
     {
@@ -70,11 +72,27 @@ class Produk extends Component
         $this->dispatch('berhasil', 'Harga Reseller Berhasil di Ubah');
     }
 
+    public function ubahStatusHarga($id, $status)
+    {
+        switch ($status) {
+            case 1:                
+                Harga::where('id', $id)->update(['status' => 1]);                
+                $this->dispatch('berhasil', 'Ubah Status Berhasil');
+                break;
+            case 0:                
+                Harga::where('id', $id)->update(['status' => 0]);                
+                $this->dispatch('berhasil', 'Ubah Status Berhasil');
+                break;
+            default:
+                $this->dispatch('gagal', 'Gagal!');
+        }
+    }
+
 
     public function render()
-    {
+    {        
         return view('livewire.realm.produk', [
-            'produk' => Game::get()
+            'produk' => Game::orderBy('nama', 'asc')->get()
         ]);
     }
 }

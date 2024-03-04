@@ -39,7 +39,8 @@
                                         @else
                                         value="1" 
                                         unchecked @endif
-                                        wire:click="status({{ $p->id }}, {{ $p->status === 1 ? 0 : 1 }})">
+                                        wire:click="status({{ $p->id }}, {{ $p->status === 1 ? 0 : 1 }})"
+                                        wire:loading.attr="disabled">
                                 </label>
                             </td>
                         </tr>
@@ -77,6 +78,7 @@
                                         <th>Profit dari Reseller</th>
                                         <th>Start Cut Off</th>
                                         <th>End Cut Off</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,7 +105,8 @@
                                                 <td>
                                                     <input type="text" class="form-control"
                                                         wire:model="items.{{ $h->id }}"
-                                                        wire:change="updateHargaJual({{ $h->id }})">
+                                                        wire:change="updateHargaJual({{ $h->id }})"
+                                                        wire:loading.attr="disabled">
                                                 </td>
                                                 <td
                                                     @if ($profit[$h->id] > 0) class="text-success" @else class="text-danger" @endif>
@@ -111,13 +114,26 @@
                                                 <td>
                                                     <input type="text" class="form-control"
                                                         wire:model="reseller.{{ $h->id }}"
-                                                        wire:change="updateHargaReseller({{ $h->id }})">
+                                                        wire:change="updateHargaReseller({{ $h->id }})"
+                                                        wire:loading.attr="disabled">
                                                 </td>
                                                 <td
                                                     @if ($profit_reseller[$h->id] > 0) class="text-success" @else class="text-danger" @endif>
                                                     {{ $call->formatRupiah($profit_reseller[$h->id]) }}</td>
                                                 <td>{{ $h->start_cut_off }}</td>
                                                 <td>{{ $h->end_cut_off }}</td>
+                                                <td>
+                                                    <label class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            @if ($h->status === 1) value="0"
+                                                        checked 
+                                                        @else
+                                                        value="1" 
+                                                        unchecked @endif
+                                                            wire:click="ubahStatusHarga({{ $h->id }}, {{ $h->status === 1 ? 0 : 1 }})"
+                                                            wire:loading.attr="disabled">
+                                                    </label>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
