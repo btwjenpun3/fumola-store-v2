@@ -60,12 +60,12 @@
                     <h5 class="modal-title">Set Harga Produk : {{ $nama }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div wire:loading.target="show">
+                <div wire:loading wire:target="show">
                     <div class="progress progress-sm">
                         <div class="progress-bar progress-bar-indeterminate"></div>
                     </div>
                 </div>
-                <div wire:loading.remove wire:loading.target="show">
+                <div wire:loading.remove wire:target="show">
                     <div class="modal-body">
                         <div class="d-flex justify-content-end mb-3">
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sync-modal">
