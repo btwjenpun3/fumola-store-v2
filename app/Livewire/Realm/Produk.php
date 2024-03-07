@@ -168,9 +168,8 @@ class Produk extends Component
                     }
                 }        
                 if ($status === 0) {
-                    Harga::updateOrCreate(
-                        ['kode_produk' => $item['buyer_sku_code']],
-                        [
+                    Harga::create([
+                            'kode_produk' => $item['buyer_sku_code'],                        
                             'game_id' => $data->id,
                             'nama_produk' => $item['product_name'],
                             'tipe' => $item['type'],
@@ -183,8 +182,7 @@ class Produk extends Component
                             'start_cut_off' => $item['start_cut_off'],
                             'end_cut_off' => $item['end_cut_off'],
                             'status' => 0
-                        ]
-                    );
+                        ]);
                 } else {
                     Harga::where('kode_produk', $item['buyer_sku_code'])->update([
                         'game_id' => $data->id,
