@@ -70,6 +70,69 @@
                             </span>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span
+                                class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-recharging"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M7.038 4.5a9 9 0 0 0 -2.495 2.47" />
+                                    <path d="M3.186 10.209a9 9 0 0 0 0 3.508" />
+                                    <path d="M4.5 16.962a9 9 0 0 0 2.47 2.495" />
+                                    <path d="M10.209 20.814a9 9 0 0 0 3.5 0" />
+                                    <path d="M16.962 19.5a9 9 0 0 0 2.495 -2.47" />
+                                    <path d="M20.814 13.791a9 9 0 0 0 0 -3.508" />
+                                    <path d="M19.5 7.038a9 9 0 0 0 -2.47 -2.495" />
+                                    <path d="M13.791 3.186a9 9 0 0 0 -3.508 -.02" />
+                                    <path d="M12 8l-2 4h4l-2 4" />
+                                    <path d="M12 21a9 9 0 0 0 0 -18" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                Top Up
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    @foreach ($menus as $menu)
+                                        @if ($menu->kategori == 'Games')
+                                            <a class="dropdown-item"
+                                                href="{{ route('topup.index', ['slug' => $menu->slug]) }}">
+                                                {{ $menu->nama }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="dropdown-menu-column">
+                                    @foreach ($menus as $menu)
+                                        @if ($menu->kategori == 'Pulsa')
+                                            <a class="dropdown-item"
+                                                href="{{ route('topup.index', ['slug' => $menu->slug]) }}">
+                                                {{ $menu->nama }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    <a class="dropdown-item" href="{{ route('topup.index', ['slug' => 'pln']) }}">
+                                        Token Listrik
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-column">
+                                    @foreach ($menus as $menu)
+                                        @if ($menu->kategori == 'Voucher')
+                                            <a class="dropdown-item"
+                                                href="{{ route('topup.index', ['slug' => $menu->slug]) }}">
+                                                {{ $menu->nama }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

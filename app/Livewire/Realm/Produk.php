@@ -81,12 +81,10 @@ class Produk extends Component
         $data = Game::where('id', $id)->first();
         $this->id = $id;
         $this->sync = $data->id;
-        $this->nama = $data->nama;                   
+        $this->nama = $data->nama;                  
         foreach($data->harga as $item) {
             $this->tipe[$item->id] = $item->tipe;
             $this->modal[$item->id] = $item->modal;
-            $this->profit[$item->id] = $item->profit;
-            $this->profit_reseller[$item->id] = $item->profit_reseller;
             $this->items[$item->id] = $item->harga_jual;
             $this->reseller[$item->id] = $item->harga_jual_reseller;
         }
@@ -102,23 +100,23 @@ class Produk extends Component
 
     public function updateHargaJual($id)
     {
-        $profit = $this->items[$id] - $this->modal[$id];
-        Harga::where('id', $id)->update([
+        $data = Harga::where('id', $id)->first();
+        $profit = $this->items[$id] - $data->modal;
+        $data->update([
             'harga_jual' => $this->items[$id],
             'profit' => $profit
-        ]); 
-        $this->profit[$id] = $profit;     
+        ]);     
         $this->dispatch('berhasil', 'Harga Jual Berhasil di Ubah');
     }
 
     public function updateHargaReseller($id)
     {
-        $profit = $this->reseller[$id] - $this->modal[$id];
+        $data = Harga::where('id', $id)->first();
+        $profit = $this->reseller[$id] - $data->modal;
         Harga::where('id', $id)->update([
             'harga_jual_reseller' => $this->reseller[$id],
             'profit_reseller' => $profit
-        ]);  
-        $this->profit_reseller[$id] = $profit;     
+        ]);       
         $this->dispatch('berhasil', 'Harga Reseller Berhasil di Ubah');
     }
 
@@ -151,22 +149,25 @@ class Produk extends Component
             ]);        
             if (!$response->successful()) {
                 throw new \Exception('Terdapat masalah saat sinkronisasi produk');
-            }        
+            }       
             $jsonDecode = $response->json();
             $produk = Harga::where('game_id', $data->id)->get();        
             foreach ($jsonDecode['data'] as $item) {
                 if ($item['brand'] !== $data->brand) {
                     continue;
                 }        
-                $harga = Harga::where('kode_produk', $item['buyer_sku_code'])->first();        
-                $status = 0;        
-                if ($produk->contains('kode_produk', $item['buyer_sku_code'])) {
-                    if ($item['buyer_product_status'] && $item['seller_product_status']) {
-                        $status = 1;
-                    } elseif ($item['buyer_product_status'] && !$item['seller_product_status']) {
-                        $status = 3;
-                    }
-                }        
+                $harga = Harga::where('kode_produk', $item['buyer_sku_code'])->first();
+                if($harga) {                            
+                    if ($produk->contains('kode_produk', $item['buyer_sku_code'])) {
+                        if ($item['buyer_product_status'] && $item['seller_product_status']) {
+                            $status = 1;
+                        } elseif ($item['buyer_product_status'] && !$item['seller_product_status']) {
+                            $status = 3;
+                        }
+                    }  
+                } else {
+                    $status = 0;
+                }    
                 if ($status === 0) {
                     Harga::create([
                             'kode_produk' => $item['buyer_sku_code'],                        
@@ -178,11 +179,13 @@ class Produk extends Component
                             'gambar' => 'produk/ml-diamond.webp',
                             'modal' => $item['price'],
                             'harga_jual' => 0,
-                            'profit' => 0,
+                            'profit' => 0 - $item['price'],                            
+                            'harga_jual_reseller' => 0,
+                            'profit_reseller' => 0 - $item['price'],
                             'start_cut_off' => $item['start_cut_off'],
                             'end_cut_off' => $item['end_cut_off'],
                             'status' => 0
-                        ]);
+                        ]);  
                 } else {
                     Harga::where('kode_produk', $item['buyer_sku_code'])->update([
                         'game_id' => $data->id,

@@ -119,7 +119,8 @@
                                                     <td>
                                                         <select class="form-control"
                                                             wire:model="tipe.{{ $h->id }}"
-                                                            wire:change="updateTipe({{ $h->id }})">
+                                                            wire:change="updateTipe({{ $h->id }})"
+                                                            wire:loading.attr="disabled">
                                                             <option value="Umum">Umum</option>
                                                             <option value="Membership">Membership</option>
                                                         </select>
@@ -134,8 +135,9 @@
                                                             wire:loading.attr="disabled">
                                                     </td>
                                                     <td
-                                                        @if ($profit[$h->id] > 0) class="text-success" @else class="text-danger" @endif>
-                                                        {{ $call->formatRupiah($profit[$h->id]) }}</td>
+                                                        @if ($h->profit > 0) class="text-success" @else class="text-danger" @endif>
+                                                        {{ $call->formatRupiah($h->profit) }}
+                                                    </td>
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             wire:model="reseller.{{ $h->id }}"
@@ -143,8 +145,8 @@
                                                             wire:loading.attr="disabled">
                                                     </td>
                                                     <td
-                                                        @if ($profit_reseller[$h->id] > 0) class="text-success" @else class="text-danger" @endif>
-                                                        {{ $call->formatRupiah($profit_reseller[$h->id]) }}</td>
+                                                        @if ($h->profit_reseller > 0) class="text-success" @else class="text-danger" @endif>
+                                                        {{ $call->formatRupiah($h->profit_reseller) }}</td>
                                                     <td>{{ $h->start_cut_off }}</td>
                                                     <td>{{ $h->end_cut_off }}</td>
                                                     <td>
@@ -207,7 +209,7 @@
                             <label class="form-label required">
                                 Brand
                                 <span data-bs-toggle="tooltip" data-bs-placement="right"
-                                    title="Brand harus mirip dengan di Digiflazz">
+                                    title="Brand harus mirip dengan di Digiflazz" wire:ignore.self>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="currentColor" fill="none" stroke-linecap="round"
@@ -244,7 +246,7 @@
                             <label class="form-label required">
                                 Kode
                                 <span data-bs-toggle="tooltip" data-bs-placement="right"
-                                    title="Singkatan dari nama produk. Misal Mobile Legend = ml">
+                                    title="Singkatan dari nama produk. Misal Mobile Legend = ml" wire:ignore.self>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="currentColor" fill="none" stroke-linecap="round"
@@ -266,7 +268,7 @@
                             <label class="form-label required">
                                 Upload Gambar
                                 <span data-bs-toggle="tooltip" data-bs-placement="right"
-                                    title="Format = .webp, Ukuran Maksimum = 128 Kb">
+                                    title="Format = .webp, Ukuran Maksimum = 128 Kb" wire:ignore.self>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="currentColor" fill="none" stroke-linecap="round"

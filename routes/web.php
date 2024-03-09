@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Realm\AuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Realm\DashboardController;
 use App\Http\Controllers\Realm\ProdukController;
+use App\Http\Controllers\Realm\TopUpController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,12 +27,13 @@ Route::prefix('/auth')
     ->controller(AuthController::class)
     ->middleware('guest')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route::get('/login', 'login')->name('login');
     });
 
 Route::prefix('/realm/dashboard')
     ->name('dashboard.')
     ->controller(DashboardController::class)
+    ->middleware('auth')
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
@@ -39,7 +41,16 @@ Route::prefix('/realm/dashboard')
 Route::prefix('/realm/produk')
     ->name('produk.')
     ->controller(ProdukController::class)
+    ->middleware('auth')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+    });
+
+Route::prefix('/realm/topup')
+    ->name('topup.')
+    ->controller(TopUpController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/{slug}', 'index')->name('index');
     });
     

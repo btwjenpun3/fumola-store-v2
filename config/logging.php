@@ -132,6 +132,12 @@ return [
             'level' => 'error',
             'path' => storage_path('logs/produk.log'),
         ],
+
+        'topup' => [
+            'driver' => 'single',
+            'level' => 'error',
+            'path' => storage_path('logs/topup.log'),
+        ],
     ],
 
 ];

@@ -20,5 +20,10 @@ class Game extends Model
     {
         return $this->hasMany(Harga::class);
     }
+
+    public function customer()
+    {
+        return $this->hasMany(Customer::class);
+    }
     
 }
