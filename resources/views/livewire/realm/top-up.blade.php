@@ -61,7 +61,8 @@
                                 @endphp
                                 <label class="form-label required mt-3">Pilih
                                     Denom</label>
-                                <select class="form-select @error('denom') is-invalid @enderror" wire:model="productCode">
+                                <select class="form-select @error('productCode') is-invalid @enderror"
+                                    wire:model="productCode">
                                     <option value="" selected>-- Pilih Denom --</option>
                                     @foreach ($harga as $p)
                                         @switch(auth()->user()->role->name)
@@ -81,7 +82,7 @@
                                             @break
 
                                             @case('reseller')
-                                                @if ($p->status == 0 || $p->status == 3 || $p->harga_jual <= 0 || $p->harga_jual <= $p->modal)
+                                                @if ($p->status == 0 || $p->status == 3 || $p->harga_jual_reseller <= 0 || $p->harga_jual_reseller <= $p->modal)
                                                     <option disabled>
                                                         (OFFLINE)
                                                         {{ $p->nama_produk }} (
@@ -99,7 +100,7 @@
                                         @endswitch
                                     @endforeach
                                 </select>
-                                @error('denom')
+                                @error('productCode')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
@@ -1174,7 +1175,9 @@
 
                                 <div class="col-md-12">
                                     @if (isset(auth()->user()->google_id) && auth()->user()->password_changed == 0)
-                                        <div class="form-label mt-3">Masukkan Password Akun Realm Kamu </div>
+                                        <label class="form-label mt-3 required">Masukkan
+                                            Password Akun Realm Kamu
+                                        </label>
                                         <p>
                                             <small>(Khusus untuk pengguna Google) Password kamu adalah Kode Reseller
                                                 kamu.
@@ -1189,12 +1192,21 @@
                                                 otomatis terisi dan bisa langsung melakukan Top Up
                                             </small>
                                         </p>
-                                        <input type="password" class="form-control" placeholder="-- Password Kamu --"
-                                            value="{{ auth()->user()->kode_reseller }}" disabled>
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="-- Password Kamu --"
+                                            value="{{ auth()->user()->kode_reseller }}" wire:model="password">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     @else
-                                        <div class="form-label mt-3">Masukkan Password Akun Realm Kamu</div>
-                                        <input type="password" class="form-control" placeholder="-- Password Kamu --"
-                                            wire:model="password">
+                                        <div class="form-label mt-3 required">Masukkan Password Akun Realm Kamu</div>
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="-- Password Kamu --" wire:model="password">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     @endif
 
                                     <div class="col-md-12 mt-3">
@@ -1273,7 +1285,8 @@
 
     {{-- Modal Beli --}}
 
-    <div class="modal modal-blur fade" id="modal-submit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal modal-blur fade" id="modal-submit" tabindex="-1" role="dialog" aria-hidden="true"
+        wire:ignore.self>
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1302,13 +1315,44 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a href="#" id="btn-submit" class="btn btn-success w-100"
-                                    data-bs-dismiss="modal" wire:click="topup">
+                                <button id="btn-submit" class="btn btn-success w-100" wire:click="topup"
+                                    data-bs-toggle="modal" data-bs-target="#process-modal"
+                                    wire:loading.attr="disabled">
                                     Proses
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Process --}}
+
+    <div class="modal modal-blur fade" id="process-modal" tabindex="-1" role="dialog" aria-hidden="true"
+        wire:ignore.self>
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <h4>Sedang memproses pembelian...</h4>
+                    <div class="spinner-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Berhasil --}}
+
+    <div class="modal modal-blur fade" id="topup-success-modal" tabindex="-1" role="dialog" aria-hidden="true"
+        wire:ignore.self>
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <h4>Pembelian berhasil!</h4>
+                    <p class="text-success">
+                        Nomor Invoice : {{ $nomorInvoice }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -1327,8 +1371,15 @@
                 $('#player-found').hide();
                 $('#player-not-found').show();
             });
+            $wire.on('success', (data) => {
+                toastr.success(data)
+            });
             $wire.on('error', (data) => {
                 toastr.error(data)
+            });
+            $wire.on('topup-success', () => {
+                $('#process-modal').modal('hide');
+                $('#topup-success-modal').modal('show');
             });
         </script>
     @endscript

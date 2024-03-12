@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Realm\DashboardController;
+use App\Http\Controllers\Realm\InvoiceController;
 use App\Http\Controllers\Realm\ProdukController;
 use App\Http\Controllers\Realm\TopUpController;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,13 @@ Route::prefix('/realm/topup')
     ->middleware('auth')
     ->group(function () {
         Route::get('/{slug}', 'index')->name('index');
+    });
+
+Route::prefix('/realm/invoice')
+    ->name('invoice.')
+    ->controller(InvoiceController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/web', 'web')->name('web');
     });
     
