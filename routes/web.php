@@ -5,6 +5,7 @@ use App\Http\Controllers\Realm\DashboardController;
 use App\Http\Controllers\Realm\InvoiceController;
 use App\Http\Controllers\Realm\ProdukController;
 use App\Http\Controllers\Realm\TopUpController;
+use App\Http\Controllers\Realm\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,5 +62,15 @@ Route::prefix('/realm/invoice')
     ->middleware('auth')
     ->group(function () {
         Route::get('/web', 'web')->name('web');
+        Route::get('/reseller', 'reseller')->name('reseller');
+        Route::get('/user', 'user')->name('user');
+    });
+
+Route::prefix('/realm/transaksi')
+    ->name('transaksi.')
+    ->controller(TransaksiController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
     });
     

@@ -11,4 +11,14 @@ class InvoiceController extends Controller
     {
         return view('realm.pages.invoiceweb');
     }
+
+    public function reseller()
+    {
+        return view('realm.pages.invoicereseller');
+    }
+
+    public function user()
+    {
+        return view('realm.pages.invoiceuser');
+    }
 }

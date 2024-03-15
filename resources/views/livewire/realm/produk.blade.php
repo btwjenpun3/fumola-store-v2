@@ -117,7 +117,7 @@
                                                     </td>
                                                     <td>{{ $h->nama_produk }}</td>
                                                     <td>
-                                                        <select class="form-control"
+                                                        <select class="form-select"
                                                             wire:model="tipe.{{ $h->id }}"
                                                             wire:change="updateTipe({{ $h->id }})"
                                                             wire:loading.attr="disabled">

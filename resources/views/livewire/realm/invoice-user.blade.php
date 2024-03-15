@@ -9,8 +9,7 @@
                         <th>Produk</th>
                         <th>Nomor Invoice</th>
                         <th>Tanggal</th>
-                        <th>Harga Jual + Admin</th>
-                        <th>Profit</th>
+                        <th>Harga Beli</th>
                         <th class="w-1"></th>
                         <th></th>
                     </tr>
@@ -43,7 +42,6 @@
                             <td>{{ $d->nomor_invoice }}</td>
                             <td>{{ $d->created_at }} WIB</td>
                             <td>{{ $call->formatRupiah($d->total) }}</td>
-                            <td class="text-success">{{ $call->formatRupiah($d->profit) }}</td>
                             <td>
                                 <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#modal-detail"
                                     wire:click="show({{ $d->id }})">Detail</button>
