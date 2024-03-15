@@ -48,16 +48,50 @@
                             <td>{{ $d->nomor_invoice }}</td>
                             <td>{{ $d->harga->nama_produk }}</td>
                             <td>{{ $d->harga->kode_produk }}</td>
-                            <td class="text-danger">
-                                @if (isset($d->digiflazz->saldo_terakhir))
-                                    {{ $call->formatRupiah($d->digiflazz->saldo_terakhir) }}
+                            <td class="text-success">
+                                @if (isset($d->digiflazz))
+                                    @switch($d->digiflazz->status)
+                                        @case('Pending')
+                                            -
+                                        @break
+
+                                        @case('Sukses')
+                                            {{ $call->formatRupiah($d->digiflazz->saldo_terakhir) }}
+                                        @break
+
+                                        @case('Gagal')
+                                            -
+                                        @break
+
+                                        @default
+                                            -
+                                    @endswitch
                                 @else
                                     -
                                 @endif
                             </td>
-                            <td class="text-success">
-                                @if (isset($d->digiflazz->saldo_terpotong))
-                                    {{ $call->formatRupiah($d->digiflazz->saldo_terpotong) }}
+                            <td class="text-danger">
+                                @if (isset($d->digiflazz))
+                                    @switch($d->digiflazz->status)
+                                        @case('Pending')
+                                            -
+                                        @break
+
+                                        @case('Sukses')
+                                            @if (isset($d->digiflazz->saldo_terpotong))
+                                                {{ $call->formatRupiah($d->digiflazz->saldo_terpotong) }}
+                                            @else
+                                                -
+                                            @endif
+                                        @break
+
+                                        @case('Gagal')
+                                            -
+                                        @break
+
+                                        @default
+                                            -
+                                    @endswitch
                                 @else
                                     -
                                 @endif

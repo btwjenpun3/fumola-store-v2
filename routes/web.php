@@ -3,9 +3,13 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Realm\DashboardController;
 use App\Http\Controllers\Realm\InvoiceController;
+use App\Http\Controllers\Realm\PaymentController;
 use App\Http\Controllers\Realm\ProdukController;
+use App\Http\Controllers\Realm\ReportController;
+use App\Http\Controllers\Realm\ReportProfitController;
 use App\Http\Controllers\Realm\TopUpController;
 use App\Http\Controllers\Realm\TransaksiController;
+use App\Http\Controllers\Realm\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +73,30 @@ Route::prefix('/realm/invoice')
 Route::prefix('/realm/transaksi')
     ->name('transaksi.')
     ->controller(TransaksiController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
+Route::prefix('/realm/payment')
+    ->name('payment.')
+    ->controller(PaymentController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
+Route::prefix('/realm/report')
+    ->name('report.')
+    ->controller(ReportController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/profit', 'profit')->name('profit');
+    });
+
+Route::prefix('/realm/user')
+    ->name('user.')
+    ->controller(UserController::class)
     ->middleware('auth')
     ->group(function () {
         Route::get('/', 'index')->name('index');
