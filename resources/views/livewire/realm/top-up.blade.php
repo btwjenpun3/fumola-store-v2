@@ -1345,14 +1345,18 @@
     {{-- Modal Berhasil --}}
 
     <div class="modal modal-blur fade" id="topup-success-modal" tabindex="-1" role="dialog" aria-hidden="true"
-        wire:ignore.self>
+        data-bs-backdrop='static' wire:ignore.self>
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body text-center py-4">
-                    <h4>Pembelian berhasil!</h4>
-                    <p class="text-success">
-                        Nomor Invoice : {{ $nomorInvoice }}
-                    </p>
+                <div class="modal-body text-center py-3">
+                    <h5>Berhasil Membuat Invoice</h5>
+                    <h3 class="text-success">
+                        {{ $nomorInvoice }}
+                    </h3>
+                    <small>Harap tunggu kami sedang memproses Top up kamu</small>
+                    <br>
+                    <br>
+                    <div class="spinner-grow text-green" role="status"></div>
                 </div>
             </div>
         </div>
@@ -1375,11 +1379,14 @@
                 toastr.success(data)
             });
             $wire.on('error', (data) => {
-                toastr.error(data)
+                toastr.error(data);
             });
             $wire.on('topup-success', () => {
                 $('#process-modal').modal('hide');
                 $('#topup-success-modal').modal('show');
+            });
+            $wire.on('topup-failed', () => {
+                $('#process-modal').modal('hide');
             });
         </script>
     @endscript
