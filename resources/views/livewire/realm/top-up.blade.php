@@ -1401,7 +1401,7 @@
             window.Echo.channel('topup-{{ auth()->id() }}')
                 .listen('TopUpEvent', (event) => {
                     $('#process-modal').modal('hide');
-                    toastr.success(event.message);
+                    $('#topup-success-modal').modal('show');
                 });
 
             window.Echo.channel('topup-failed-{{ auth()->id() }}')
