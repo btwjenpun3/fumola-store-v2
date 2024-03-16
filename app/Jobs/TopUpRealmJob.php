@@ -52,8 +52,7 @@ class TopUpRealmJob implements ShouldQueue
                     if($user->role->name == 'reseller') {
                         if($user->saldo <= $data->harga_jual_reseller ) {
                             event(new TopUpEventFailed($this->authId, 'Saldo Kamu Kurang! Harap Recharge Saldo Kamu Lagi!')); 
-                            $this->delete(); 
-                            return;
+                            throw new \Exception('Error message');
                         }
                     }                  
                     if(isset($this->customerField)) {
@@ -88,8 +87,7 @@ class TopUpRealmJob implements ShouldQueue
                         }
                         if ($waktuSekarang->between($mulaiCutOff, $selesaiCutOff)) {                        
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline hingga pukul ' . $data->end_cut_off . ' WIB')); 
-                            $this->delete(); 
-                            return;
+                            throw new \Exception('Error message');
                         }
                     } 
 
@@ -106,8 +104,7 @@ class TopUpRealmJob implements ShouldQueue
                             'status' => 3
                         ]);                        
                         event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Silahkan pilih Denom lain')); 
-                        $this->delete(); 
-                        return;
+                        throw new \Exception('Error message');
                     }
 
                     if($data->modal != $cekOffline['data'][0]['price']) {   
@@ -143,8 +140,7 @@ class TopUpRealmJob implements ShouldQueue
                     if($user->role->name == 'reseller') {
                         if($data->harga_jual_reseller < $hargaModal) {                                
                             event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Silahkan pilih Denom lain'));
-                            $this->delete(); 
-                            return;
+                            throw new \Exception('Error message');
                         }                        
                     } elseif($user->role->name == 'admin') {
                         if($data->harga_jual < $hargaModal) {
@@ -152,8 +148,7 @@ class TopUpRealmJob implements ShouldQueue
                                 'status' => 3
                             ]);
                             event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!'));
-                            $this->delete(); 
-                            return;
+                            throw new \Exception('Error message');
                         }  
                     }
                     
@@ -175,8 +170,7 @@ class TopUpRealmJob implements ShouldQueue
 
                     if($saldo['data']['deposit'] <= $data->modal) {                       
                         event(new TopUpEventFailed($this->authId, 'Terdapat Error. Harap Hubungi Admin!'));
-                        $this->delete(); 
-                        return;
+                        throw new \Exception('Error message');
                     }                        
     
                     $via = 'REALM';                        
@@ -246,8 +240,7 @@ class TopUpRealmJob implements ShouldQueue
                         } else {
                             Log::error('Error occurred: Format customer_no dengan seller ' . $data->seller_name . ' belum di setting!');
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline'));   
-                            $this->delete(); 
-                            return;                     
+                            throw new \Exception('Error message');                     
                         }                   
     
                     } elseif ($data->game->brand == 'One Punch Man') {
@@ -255,8 +248,7 @@ class TopUpRealmJob implements ShouldQueue
                             $customer_no = $this->userId . ',' . $this->serverId; 
                         } else {
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline')); 
-                            $this->delete(); 
-                            return;
+                            throw new \Exception('Error message');
                         }
     
                     } else {
