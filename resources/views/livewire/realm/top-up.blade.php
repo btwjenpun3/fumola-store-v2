@@ -1400,7 +1400,14 @@
             });
             window.Echo.channel('topup-{{ auth()->id() }}')
                 .listen('TopUpEvent', (event) => {
-                    toastr.error('mantab');
+                    $('#process-modal').modal('hide');
+                    toastr.success(event.message);
+                });
+
+            window.Echo.channel('topup-failed-{{ auth()->id() }}')
+                .listen('TopUpEventFailed', (event) => {
+                    $('#process-modal').modal('hide');
+                    toastr.error(event.message);
                 });
         </script>
     @endscript
