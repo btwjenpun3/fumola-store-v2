@@ -52,6 +52,7 @@ class TopUpRealmJob implements ShouldQueue
                     if($user->role->name == 'reseller') {
                         if($user->saldo <= $data->harga_jual_reseller ) {
                             event(new TopUpEventFailed($this->authId, 'Saldo Kamu Kurang! Harap Recharge Saldo Kamu Lagi!')); 
+                            $this->delete(); 
                             return;
                         }
                     }                  
@@ -87,6 +88,7 @@ class TopUpRealmJob implements ShouldQueue
                         }
                         if ($waktuSekarang->between($mulaiCutOff, $selesaiCutOff)) {                        
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline hingga pukul ' . $data->end_cut_off . ' WIB')); 
+                            $this->delete(); 
                             return;
                         }
                     } 
@@ -104,6 +106,7 @@ class TopUpRealmJob implements ShouldQueue
                             'status' => 3
                         ]);                        
                         event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Silahkan pilih Denom lain')); 
+                        $this->delete(); 
                         return;
                     }
 
@@ -120,6 +123,7 @@ class TopUpRealmJob implements ShouldQueue
                                     'status' => 3
                                 ]);
                                 event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!')); 
+                                $this->delete(); 
                                 return;
                             }
                         } else if($this->authUser->role->name == 'reseller') {
@@ -128,6 +132,7 @@ class TopUpRealmJob implements ShouldQueue
                                     'status' => 3
                                 ]);
                                 event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Harap pilih Denom yang lain'));
+                                $this->delete(); 
                                 return;
                             }
                         }                           
@@ -138,6 +143,7 @@ class TopUpRealmJob implements ShouldQueue
                     if($user->role->name == 'reseller') {
                         if($data->harga_jual_reseller < $hargaModal) {                                
                             event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Silahkan pilih Denom lain'));
+                            $this->delete(); 
                             return;
                         }                        
                     } elseif($user->role->name == 'admin') {
@@ -146,6 +152,7 @@ class TopUpRealmJob implements ShouldQueue
                                 'status' => 3
                             ]);
                             event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!'));
+                            $this->delete(); 
                             return;
                         }  
                     }
@@ -168,6 +175,7 @@ class TopUpRealmJob implements ShouldQueue
 
                     if($saldo['data']['deposit'] <= $data->modal) {                       
                         event(new TopUpEventFailed($this->authId, 'Terdapat Error. Harap Hubungi Admin!'));
+                        $this->delete(); 
                         return;
                     }                        
     
@@ -188,6 +196,7 @@ class TopUpRealmJob implements ShouldQueue
                                 $serverId = 'prod_official_eur';
                             } else {  
                                 event(new TopUpEventFailed($this->authId, 'Produk ini dengan Server TW_HK_MO tidak support! Harap pilih denom yang lain'));   
+                                $this->delete(); 
                                 return;                           
                             }
                             $customer_no = $this->userId . '|' . $serverId;
@@ -210,6 +219,7 @@ class TopUpRealmJob implements ShouldQueue
                                 $serverId = '004';
                             } else {  
                                 event(new TopUpEventFailed($this->authId, 'Produk ini dengan Server TW_HK_MO tidak support! Harap pilih denom yang lain'));   
+                                $this->delete(); 
                                 return;                            
                             }
                             $customer_no = $serverId . $this->userId;
@@ -236,6 +246,7 @@ class TopUpRealmJob implements ShouldQueue
                         } else {
                             Log::error('Error occurred: Format customer_no dengan seller ' . $data->seller_name . ' belum di setting!');
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline'));   
+                            $this->delete(); 
                             return;                     
                         }                   
     
@@ -244,6 +255,7 @@ class TopUpRealmJob implements ShouldQueue
                             $customer_no = $this->userId . ',' . $this->serverId; 
                         } else {
                             event(new TopUpEventFailed($this->authId, 'Produk ini sedang Offline')); 
+                            $this->delete(); 
                             return;
                         }
     
