@@ -1388,6 +1388,20 @@
             $wire.on('topup-failed', () => {
                 $('#process-modal').modal('hide');
             });
+
+            Pusher.logToConsole = true;
+            var pusher = new Pusher('d4afa1b27ea54cbf1546', {
+                cluster: 'ap1'
+            });
+            window.Echo = new Echo({
+                broadcaster: 'pusher',
+                key: 'd4afa1b27ea54cbf1546',
+                cluster: 'ap1'
+            });
+            window.Echo.channel('topup-{{ auth()->id() }}')
+                .listen('TopUpEvent', (event) => {
+                    toastr.error('mantab');
+                });
         </script>
     @endscript
 </div>

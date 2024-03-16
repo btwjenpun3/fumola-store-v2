@@ -137,6 +137,13 @@ return [
             'database' => env('REDIS_DB', '0'),
         ],
 
+        'pulse' => [
+            'host' => env('PULSE_REDIS_HOST', '127.0.0.1'),
+            'password' => env('PULSE_REDIS_PASSWORD', null),
+            'port' => env('PULSE_REDIS_PORT', 6379),
+            'database' => env('PULSE_REDIS_DB', 0),
+        ],
+
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),

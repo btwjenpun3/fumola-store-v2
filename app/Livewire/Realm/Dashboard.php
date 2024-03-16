@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Realm;
 
+use App\Events\TopUpEvent;
 use App\Http\Controllers\GlobalController;
 use Livewire\Component;
 
@@ -13,7 +14,7 @@ class Dashboard extends Component
     {
         $call = new GlobalController();
         $this->saldo = $call->cekSaldo();
-    }
+    }    
 
     public function render()
     {
