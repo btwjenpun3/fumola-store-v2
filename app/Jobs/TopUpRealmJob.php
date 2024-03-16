@@ -42,6 +42,11 @@ class TopUpRealmJob implements ShouldQueue
     /**
      * Execute the job.
      */
+    public function stop()
+    {
+        return false;
+    }
+    
     public function handle(): void
     {
         try { 
@@ -120,8 +125,7 @@ class TopUpRealmJob implements ShouldQueue
                                     'status' => 3
                                 ]);
                                 event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!')); 
-                                $this->delete(); 
-                                return;
+                                throw new \Exception('Error message');
                             }
                         } else if($this->authUser->role->name == 'reseller') {
                             if($data->harga_jual_reseller < $cekOffline['data'][0]['price']) {
@@ -129,8 +133,7 @@ class TopUpRealmJob implements ShouldQueue
                                     'status' => 3
                                 ]);
                                 event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline. Harap pilih Denom yang lain'));
-                                $this->delete(); 
-                                return;
+                                throw new \Exception('Error message');
                             }
                         }                           
                     } else {
