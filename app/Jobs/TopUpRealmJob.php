@@ -190,8 +190,7 @@ class TopUpRealmJob implements ShouldQueue
                                 $serverId = 'prod_official_eur';
                             } else {  
                                 event(new TopUpEventFailed($this->authId, 'Produk ini dengan Server TW_HK_MO tidak support! Harap pilih denom yang lain'));   
-                                $this->delete(); 
-                                return;                           
+                                throw new \Exception('Error message');                          
                             }
                             $customer_no = $this->userId . '|' . $serverId;
                         } elseif($data->seller_name == 'YinYangStoreid') {
@@ -213,8 +212,7 @@ class TopUpRealmJob implements ShouldQueue
                                 $serverId = '004';
                             } else {  
                                 event(new TopUpEventFailed($this->authId, 'Produk ini dengan Server TW_HK_MO tidak support! Harap pilih denom yang lain'));   
-                                $this->delete(); 
-                                return;                            
+                                throw new \Exception('Error message');                           
                             }
                             $customer_no = $serverId . $this->userId;
                         }
@@ -332,6 +330,8 @@ class TopUpRealmJob implements ShouldQueue
         } catch (\Exception $e) {
             Log::channel('topup')->error('Terdapat error Bosss : ' . $e->getMessage()); 
             event(new TopUpEventFailed($this->authId, 'Terdapat Masalah! Harap Hubungi Admin!')); 
+            $this->delete(); 
+            return;
         }
     }
 }
