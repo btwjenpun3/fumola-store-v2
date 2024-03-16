@@ -151,7 +151,7 @@ class TopUpRealmJob implements ShouldQueue
                                 'status' => 3
                             ]);
                             event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!'));
-                            throw new \Exception('Error message');
+                            $this->stop();
                         }  
                     }
                     
