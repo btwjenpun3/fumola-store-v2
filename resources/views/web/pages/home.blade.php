@@ -102,12 +102,12 @@
                                 class="transition delay-75 duration-500 ease-in-out mt-2 border-b-[0.5px] border-textPrimary shadow-sm shadow-textPrimary"></em>
                         </button>
                     </li>
-                    <li class="swiper-slide w-[143px]" role="presentation">
+                    <li class="swiper-slide w-[67px]" role="presentation">
                         <button
                             class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
-                            id="mlbb-tab" data-tabs-target="#mlbb" type="button" role="tab" aria-controls="mlbb"
+                            id="mlbb-tab" data-tabs-target="#mlbb" type="button" role="tab" aria-controls="games"
                             aria-selected="false">
-                            Spesialis MLBB
+                            Games
                         </button>
                     </li>
                     <li class="swiper-slide w-[127px]" role="presentation">
@@ -115,31 +115,15 @@
                             class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
                             id="mobile-tab" data-tabs-target="#mobile" type="button" role="tab" aria-controls="mobile"
                             aria-selected="false">
-                            Mobile Game
+                            Voucher
                         </button>
                     </li>
-                    <li class="swiper-slide w-[92px]" role="presentation">
+                    <li class="swiper-slide w-[127px]" role="presentation">
                         <button
                             class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
                             id="pc-tab" data-tabs-target="#pc" type="button" role="tab" aria-controls="pc"
                             aria-selected="false">
-                            PC Game
-                        </button>
-                    </li>
-                    <li class="swiper-slide w-[51px]" role="presentation">
-                        <button
-                            class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
-                            id="credit-tab" data-tabs-target="#credit" type="button" role="tab"
-                            aria-controls="credit" aria-selected="false">
-                            Pulsa
-                        </button>
-                    </li>
-                    <li class="swiper-slide w-[74px]" role="presentation">
-                        <button
-                            class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
-                            id="entertainment-tab" data-tabs-target="#entertainment" type="button" role="tab"
-                            aria-controls="entertainment" aria-selected="false">
-                            Hiburan
+                            Pulsa / Data
                         </button>
                     </li>
                 </ul>
@@ -162,16 +146,6 @@
                 </div>
                 <div class="hidden" id="pc" role="tabpanel" aria-labelledby="pc-tab">
                     <div id="pcList"
-                        class="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3 lg:grid-cols-5 lg:gap-4 xl:grid-cols-6">
-                    </div>
-                </div>
-                <div class="hidden" id="credit" role="tabpanel" aria-labelledby="credit-tab">
-                    <div id="creditList"
-                        class="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3 lg:grid-cols-5 lg:gap-4 xl:grid-cols-6">
-                    </div>
-                </div>
-                <div class="hidden" id="entertainment" role="tabpanel" aria-labelledby="entertainment-tab">
-                    <div id="entertainmentList"
                         class="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3 lg:grid-cols-5 lg:gap-4 xl:grid-cols-6">
                     </div>
                 </div>

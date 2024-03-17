@@ -32,6 +32,10 @@ use Illuminate\Support\Facades\Route;
     return view('web.pages.home');
  });
 
+ Route::get('/order', function() {
+    return view('web.pages.order');
+ });
+
  Route::prefix('/generate')
     ->name('generate.')
     ->controller(GenerateProductController::class)

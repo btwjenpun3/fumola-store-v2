@@ -12,21 +12,61 @@ class GenerateProductController extends Controller
     {
         $data = Game::all();
         $path = public_path('mock/categories.json');
-        $mock = [];   
-        $games = [];     
+        $mock = [];  
+        $all = []; 
+        $game = [];  
+        $pulsa = [];
+        $voucher = [];  
         foreach($data as $g) {
-            $games[] = [
+            $all[] = [
                 '_id' => $g->id,
                 'title' => $g->nama,
                 'production' => $g->brand,
                 'image' => asset(Storage::url($g->url_gambar)),
                 'url' => '/' . $g->slug
             ];
+            if($g->kategori === 'Games') {            
+                $game[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => asset(Storage::url($g->url_gambar)),
+                    'url' => '/' . $g->slug
+                ];
+            } elseif ($g->kategori === 'Voucher') {          
+                $voucher[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => asset(Storage::url($g->url_gambar)),
+                    'url' => '/' . $g->slug
+                ];
+            } elseif ($g->kategori === 'Pulsa') {          
+                $pulsa[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => asset(Storage::url($g->url_gambar)),
+                    'url' => '/' . $g->slug
+                ];
+            }
         } 
         $mock[] = [
             '_id' => 1,
-            'all' => $games
+            'all' => $all
+        ]; 
+        $mock[] = [
+            '_id' => 2,
+            'mlbb' => $game
         ];
+        $mock[] = [
+            '_id' => 3,
+            'mobile' => $voucher
+        ];
+        $mock[] = [
+            '_id' => 4,
+            'pc' => $pulsa
+        ];          
         $jsonData = json_encode($mock, JSON_PRETTY_PRINT);   
         file_put_contents($path, $jsonData);    
     }
