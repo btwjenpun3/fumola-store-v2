@@ -327,10 +327,7 @@ class TopUpRealmJob implements ShouldQueue
                 event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline, silahkan pilih Denom yang lain'));                 
             }
         } catch (\Exception $e) {
-            Log::channel('topup')->error('Terdapat error Bosss : ' . $e->getMessage()); 
-            event(new TopUpEventFailed($this->authId, 'Terdapat Masalah! Harap Hubungi Admin!')); 
-            $this->delete(); 
-            return;
+            Log::channel('topup')->error('Terdapat error Bosss : ' . $e->getMessage());              
         }
     }
 }
