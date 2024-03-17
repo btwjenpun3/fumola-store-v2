@@ -110,7 +110,7 @@
                             Games
                         </button>
                     </li>
-                    <li class="swiper-slide w-[127px]" role="presentation">
+                    <li class="swiper-slide w-[74px]" role="presentation">
                         <button
                             class="inline-block text-base sm:text-lg md:text-xl bg-transparent px-0 pt-0 pb-2 font-sans border-b-[0.5px] !border-b-dark transition-all duration-200 hover:border-b-gray-300 hover:text-white delay-75 ease-in-out opacity-60 hover:opacity-100 aria-selected:!border-b-white aria-selected:!text-white aria-selected:opacity-100"
                             id="mobile-tab" data-tabs-target="#mobile" type="button" role="tab" aria-controls="mobile"

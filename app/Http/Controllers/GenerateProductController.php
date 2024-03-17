@@ -23,7 +23,7 @@ class GenerateProductController extends Controller
                 'title' => $g->nama,
                 'production' => $g->brand,
                 'image' => asset(Storage::url($g->url_gambar)),
-                'url' => '/' . $g->slug
+                'url' => '/top-up/' . $g->slug
             ];
             if($g->kategori === 'Games') {            
                 $game[] = [
@@ -31,7 +31,7 @@ class GenerateProductController extends Controller
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/' . $g->slug
+                    'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Voucher') {          
                 $voucher[] = [
@@ -39,7 +39,7 @@ class GenerateProductController extends Controller
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/' . $g->slug
+                    'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Pulsa') {          
                 $pulsa[] = [
@@ -47,7 +47,7 @@ class GenerateProductController extends Controller
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/' . $g->slug
+                    'url' => '/top-up/' . $g->slug
                 ];
             }
         } 

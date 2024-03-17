@@ -30,6 +30,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/web/css/style.css" />
     <!-- Styles End -->
+    @livewireStyles
 </head>
 
 <body class="antialiased">
@@ -84,6 +85,7 @@
     <!-- Call Center -->
     @include('web.partials.call-center')
     <!-- Call Center End -->
+    @livewireScripts
     <!-- Scripts -->
     <script src="/web/js/scripts.js"></script>
     <!-- Scripts End -->

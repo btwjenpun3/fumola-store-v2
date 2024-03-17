@@ -30,13 +30,21 @@ use Illuminate\Support\Facades\Route;
  * Route untuk Web 
  */
 
- Route::get('/', [RedisController::class, 'webHomePage']);
+//  Route::get('/', function() {
+//     return view('web.pages.home');
+//  });
+
+Route::get('/', [RedisController::class, 'webHomePage']);
+
+//  Route::get('/', function() {
+//     return view('web.pages.home');
+//  });
 
  Route::prefix('/top-up')
     ->name('top-up.')
     ->controller(OrderController::class)
     ->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route::get('/{slug}', 'index')->name('index');
     });
 
 
