@@ -316,18 +316,23 @@ class TopUpRealmJob implements ShouldQueue
                         }  else {
                             Log::channel('topup')->error('Terdapat error boskuh : ' . $response->json()); 
                             event(new TopUpEventFailed($this->authId, 'Terdapat masalah saat proses pengisian!')); 
+                            $this->fail('Error');
                         }                                             
                     } else {
                         event(new TopUpEventFailed($this->authId, 'Terdapat masalah saat proses pengisian!'));
+                        $this->fail('Error');
                     }  
                 } else { 
-                    event(new TopUpEventFailed($this->authId, 'Password Kamu Salah'));                                           
+                    event(new TopUpEventFailed($this->authId, 'Password Kamu Salah'));     
+                    $this->fail('Error');                                      
                 }
             } else {
-                event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline, silahkan pilih Denom yang lain'));                 
+                event(new TopUpEventFailed($this->authId, 'Denom ini sedang Offline, silahkan pilih Denom yang lain'));  
+                $this->fail('Error');               
             }
         } catch (\Exception $e) {
-            Log::channel('topup')->error('Terdapat error Bosss : ' . $e->getMessage());              
+            Log::channel('topup')->error('Terdapat error Bosss : ' . $e->getMessage());  
+            $this->fail('Error');            
         }
     }
 }
