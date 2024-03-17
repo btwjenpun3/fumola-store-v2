@@ -1,0 +1,371 @@
+[
+    {
+        "_id": 1,
+        "all": [
+            {
+                "_id": 1,
+                "title": "Mobile Legend",
+                "production": "MOBILE LEGENDS",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/mobile-legend.webp",
+                "url": "\/mobile-legend"
+            },
+            {
+                "_id": 2,
+                "title": "Free Fire",
+                "production": "FREE FIRE",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/freefire.webp",
+                "url": "\/free-fire"
+            },
+            {
+                "_id": 3,
+                "title": "Undawn",
+                "production": "Undawn",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/undawn.webp",
+                "url": "\/undawn"
+            },
+            {
+                "_id": 4,
+                "title": "LifeAfter",
+                "production": "LifeAfter Credits",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/lifeafter.webp",
+                "url": "\/lifeafter"
+            },
+            {
+                "_id": 5,
+                "title": "Token Listrik",
+                "production": "PLN",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/pln.webp",
+                "url": "\/pln"
+            },
+            {
+                "_id": 6,
+                "title": "PUBG Mobile Indonesia",
+                "production": "PUBG MOBILE",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/pubg.webp",
+                "url": "\/pubg"
+            },
+            {
+                "_id": 7,
+                "title": "HAGO",
+                "production": "HAGO",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/hago.webp",
+                "url": "\/hago"
+            },
+            {
+                "_id": 8,
+                "title": "Valorant",
+                "production": "Valorant",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/valorant.webp",
+                "url": "\/valorant"
+            },
+            {
+                "_id": 10,
+                "title": "Clash of Clans",
+                "production": "Clash of Clans",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/coc.webp",
+                "url": "\/clash-of-clans"
+            },
+            {
+                "_id": 11,
+                "title": "Bigo Live",
+                "production": "Bigo Live",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/bigo.webp",
+                "url": "\/bigo-live"
+            },
+            {
+                "_id": 12,
+                "title": "Genshin Impact",
+                "production": "Genshin Impact",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/genshin.webp",
+                "url": "\/genshin-impact"
+            },
+            {
+                "_id": 13,
+                "title": "Honkai Star Rail",
+                "production": "Honkai Star Rail",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/star-rail.webp",
+                "url": "\/honkai-star-rail"
+            },
+            {
+                "_id": 14,
+                "title": "Hay Day",
+                "production": "Hay Day",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/hayday.webp",
+                "url": "\/hay-day"
+            },
+            {
+                "_id": 15,
+                "title": "Sausage Man",
+                "production": "Sausage Man",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/sausage.webp",
+                "url": "\/sausage-man"
+            },
+            {
+                "_id": 16,
+                "title": "League of Legends Wild Rift",
+                "production": "League of Legends Wild Rift",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/lol.webp",
+                "url": "\/league-of-legends-wild-rift"
+            },
+            {
+                "_id": 17,
+                "title": "Ragnarok Origin",
+                "production": "Ragnarok Origin",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/ragnarok.webp",
+                "url": "\/ragnarok-origin"
+            },
+            {
+                "_id": 18,
+                "title": "Call of Duty Mobile - Garena",
+                "production": "Call of Duty MOBILE",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/call-of-duty-garena.webp",
+                "url": "\/call-of-duty-mobile"
+            },
+            {
+                "_id": 19,
+                "title": "Zepeto",
+                "production": "Zepeto",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/zepeto.webp",
+                "url": "\/zepeto"
+            },
+            {
+                "_id": 20,
+                "title": "Lita",
+                "production": "Lita",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/lita.webp",
+                "url": "\/lita"
+            },
+            {
+                "_id": 21,
+                "title": "Metal Slug Awakening",
+                "production": "Metal Slug Awakening",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/msa.webp",
+                "url": "\/metal-slug-awakening"
+            },
+            {
+                "_id": 22,
+                "title": "Ludo Club",
+                "production": "LUDO CLUB",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/ludo-club.webp",
+                "url": "\/ludo-club"
+            },
+            {
+                "_id": 23,
+                "title": "Dragon Raja (SEA)",
+                "production": "DRAGON RAJA - SEA",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/dragon-raja-sea.webp",
+                "url": "\/dragon-raja-sea"
+            },
+            {
+                "_id": 24,
+                "title": "Tower of Fantasy",
+                "production": "Tower of Fantasy",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/tower-of-fantasy.webp",
+                "url": "\/tower-of-fantasy"
+            },
+            {
+                "_id": 25,
+                "title": "Love Nikki",
+                "production": "Love Nikki",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/love-nikki.webp",
+                "url": "\/love-nikki"
+            },
+            {
+                "_id": 27,
+                "title": "Undawn - All Bind",
+                "production": "Undawn",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/undawn-all-bind.webp",
+                "url": "\/undawn-all-bind"
+            },
+            {
+                "_id": 28,
+                "title": "Eggy Party",
+                "production": "Eggy Party",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/eggy-party.webp",
+                "url": "\/eggy-party"
+            },
+            {
+                "_id": 29,
+                "title": "Stumble Guys",
+                "production": "Stumble Guys",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/stumble-guys.webp",
+                "url": "\/stumble-guys"
+            },
+            {
+                "_id": 30,
+                "title": "Telkomsel",
+                "production": "TELKOMSEL",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/telkomsel.webp",
+                "url": "\/telkomsel"
+            },
+            {
+                "_id": 31,
+                "title": "Indosat",
+                "production": "INDOSAT",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/indosat.webp",
+                "url": "\/indosat"
+            },
+            {
+                "_id": 32,
+                "title": "AXIS",
+                "production": "AXIS",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/axis.webp",
+                "url": "\/axis"
+            },
+            {
+                "_id": 33,
+                "title": "XL",
+                "production": "XL",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/xl.webp",
+                "url": "\/xl"
+            },
+            {
+                "_id": 34,
+                "title": "TRI",
+                "production": "TRI",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/tri.webp",
+                "url": "\/tri"
+            },
+            {
+                "_id": 35,
+                "title": "Smartfren",
+                "production": "SMARTFREN",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/smartfren.webp",
+                "url": "\/smartfren"
+            },
+            {
+                "_id": 36,
+                "title": "Razer Gold",
+                "production": "Razer Gold",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/razer-gold.webp",
+                "url": "\/razer-gold"
+            },
+            {
+                "_id": 37,
+                "title": "Garena Shell",
+                "production": "GARENA",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/garena-shell.webp",
+                "url": "\/garena-shell"
+            },
+            {
+                "_id": 38,
+                "title": "Unipin",
+                "production": "Unipin Voucher",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/unipin.webp",
+                "url": "\/unipin"
+            },
+            {
+                "_id": 39,
+                "title": "One Punch Man : The Strongest",
+                "production": "One Punch Man",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/one-punch-man-the-strongest.webp",
+                "url": "\/one-punch-man-the-strongest"
+            },
+            {
+                "_id": 40,
+                "title": "Black Clover M",
+                "production": "Black Clover M",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/black-clover-m.webp",
+                "url": "\/black-clover-m"
+            },
+            {
+                "_id": 41,
+                "title": "Roblox (Robux)",
+                "production": "Roblox",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/roblox.webp",
+                "url": "\/roblox-robux"
+            },
+            {
+                "_id": 42,
+                "title": "Ace Racer",
+                "production": "Ace Racer",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/ace-racer.webp",
+                "url": "\/ace-racer"
+            },
+            {
+                "_id": 43,
+                "title": "Astral Guardians",
+                "production": "Astral Guardians",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/astral-guardians.webp",
+                "url": "\/astral-guardians"
+            },
+            {
+                "_id": 44,
+                "title": "AU2 Mobile",
+                "production": "AU2 MOBILE",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/au2-mobile.webp",
+                "url": "\/au2-mobile"
+            },
+            {
+                "_id": 45,
+                "title": "Sky Children of the Light",
+                "production": "Sky Children of the Light",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/sky-children-of-the-light.webp",
+                "url": "\/sky-children-of-the-light"
+            },
+            {
+                "_id": 46,
+                "title": "Love and Deepspace",
+                "production": "Love and Deepspace",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/love-and-deepspace.webp",
+                "url": "\/love-and-deepspace"
+            },
+            {
+                "_id": 47,
+                "title": "Laplace M",
+                "production": "Laplace M",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/laplace-m.webp",
+                "url": "\/laplace-m"
+            },
+            {
+                "_id": 48,
+                "title": "MangaToon",
+                "production": "MangaToon",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/mangatoon.webp",
+                "url": "\/mangatoon"
+            },
+            {
+                "_id": 49,
+                "title": "Tom and Jerry : Chase",
+                "production": "Tom and Jerry : Chase",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/tom-and-jerry-chase.webp",
+                "url": "\/tom-and-jerry-chase"
+            },
+            {
+                "_id": 50,
+                "title": "State of Survival",
+                "production": "State of Survival",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/state-of-survival.webp",
+                "url": "\/state-of-survival"
+            },
+            {
+                "_id": 51,
+                "title": "Kings Choice",
+                "production": "Kings Choice",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/kings-choice.webp",
+                "url": "\/kings-choice"
+            },
+            {
+                "_id": 52,
+                "title": "PUBG New State Mobile",
+                "production": "PUBG New State Mobile",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/pubg-new-state-mobile.webp",
+                "url": "\/pubg-new-state-mobile"
+            },
+            {
+                "_id": 53,
+                "title": "FC Mobile",
+                "production": "FC Mobile",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/fc-mobile.webp",
+                "url": "\/fc-mobile"
+            },
+            {
+                "_id": 74,
+                "title": "StarMaker",
+                "production": "StarMaker",
+                "image": "http:\/\/127.0.0.1:8000\/storage\/games\/starmaker.webp",
+                "url": "\/starmaker"
+            }
+        ]
+    }
+]

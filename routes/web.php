@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GenerateProductController;
 use App\Http\Controllers\Realm\DashboardController;
 use App\Http\Controllers\Realm\InvoiceController;
 use App\Http\Controllers\Realm\PaymentController;
@@ -22,6 +23,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+/**
+ * Route untuk Web 
+ */
+
+ Route::get('/', function() {
+    return view('web.pages.home');
+ });
+
+ Route::prefix('/generate')
+    ->name('generate.')
+    ->controller(GenerateProductController::class)
+    ->group(function () {
+        Route::get('/', 'generate')->name('generate');
+    });
 
 
 /**

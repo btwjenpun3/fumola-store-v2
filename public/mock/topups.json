@@ -1,0 +1,304 @@
+[
+  {
+    "_id": "ad4aeb06-c104-44ba-865c-9453b9cb2e5c",
+    "diamonds": [
+      {
+        "_id": "246bcaae-2894-42a7-9c5b-ef6b285bc7fd",
+        "title": "5 Diamonds (5 + 0 Bonus)",
+        "price": 1550,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "6cf30553-c185-4be4-805f-d08909cccb08",
+        "title": "12 Diamonds (11 + 1 Bonus)",
+        "price": 3600,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "3af8224f-4aed-4bcc-b2e3-8b78292fa77c",
+        "title": "14 Diamonds (13 + 1 Bonus)",
+        "price": 3750,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "cfced17e-d6ea-4477-acd8-36aa04f298ba",
+        "title": "28 Diamonds (26 + 2 Bonus)",
+        "price": 7500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "402b9253-279b-4519-b34e-e02ffb641022",
+        "title": "42 Diamonds (38 + 4 Bonus)",
+        "price": 10800,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "5c1b8305-8aa0-41aa-9965-b2f8974bafc5",
+        "title": "56 Diamonds (51 + 5 Bonus)",
+        "price": 14500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "6c129b90-add8-4a8e-8276-a1317f4fc4b9",
+        "title": "70 Diamonds (64 + 6 Bonus)",
+        "price": 17500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "b2c1d641-8908-4c77-a486-4f8bdaa165f4",
+        "title": "86 Diamonds (78 + 8 Bonus)",
+        "price": 19950,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "4a06313e-3059-4f9a-83b2-b905e02dc6dd",
+        "title": "140 Diamonds (127 + 13 Bonus)",
+        "price": 34000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "9f56044a-29f8-4545-bba2-82709825ea57",
+        "title": "172 Diamonds (156 + 16 Bonus)",
+        "price": 39900,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "36ec8a42-b40f-470e-aadd-fef70397ec6d",
+        "title": "257 Diamonds (234 + 23 Bonus)",
+        "price": 59850,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "25474fde-4b28-4650-ba56-482d4d5bf07a",
+        "title": "284 Diamonds (254 + 30 Bonus)",
+        "price": 66000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "4888e0bf-1eef-43ee-8cb3-1d8ee23c80a9",
+        "title": "344 Diamonds (312 + 32 Bonus)",
+        "price": 79800,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "0899f847-61ef-4701-869f-3ebc0d97fbae",
+        "title": "355 Diamonds (317 + 38 Bonus)",
+        "price": 82000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "8ac7074c-ae56-43dc-b91e-e344507dfc88",
+        "title": "429 Diamonds (383 + 46 Bonus)",
+        "price": 99750,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "1a2aecbd-7a7c-43a1-ab88-2f9f50736837",
+        "title": "514 Diamonds (468 + 46 Bonus)",
+        "price": 117900,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "4863f346-ec4b-4d94-8cf5-3ae73e97af47",
+        "title": "600 Diamonds (546 + 54 Bonus)",
+        "price": 139500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "4c80b67b-4035-456d-b6df-32de0902081f",
+        "title": "706 Diamonds (625 + 81 Bonus)",
+        "price": 159600,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "b476ecec-8968-4bda-9cb7-6657324c8d11",
+        "title": "716 Diamonds (633 + 83 Bonus)",
+        "price": 161000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "e9f2329e-6fc5-4efe-85cf-75952a9e8260",
+        "title": "878 Diamonds (781 + 97 Bonus)",
+        "price": 199500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "c13a03e7-c369-482a-92fa-f245c2b4bfb9",
+        "title": "963 Diamonds (859 + 104 Bonus)",
+        "price": 219450,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "c0523ced-d4ad-4bc0-a509-a0dbf1a68449",
+        "title": "1050 Diamonds (937 + 113 Bonus)",
+        "price": 239400,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "7890fcea-3ea8-4137-a0bb-003f1c746951",
+        "title": "1135 Diamonds (1015 + 120 Bonus)",
+        "price": 259300,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "f9210864-80c0-48cf-9031-28b6d5c6f3ae",
+        "title": "1220 Diamonds (1093 + 127 Bonus)",
+        "price": 279300,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "dfa149d9-3157-4e38-8df4-ae9e17d4e7f0",
+        "title": "1412 Diamonds (1250 + 162 Bonus)",
+        "price": 319200,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "bd6008a6-93c4-4e63-b186-76f37bbc33a8",
+        "title": "1669 Diamonds (1484 + 185 Bonus)",
+        "price": 379000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "13e691dc-8bb9-423f-908d-23cf2171f86e",
+        "title": "2195 Diamonds (1860 + 335 Bonus)",
+        "price": 478800,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "026fbe4a-5ef8-4cd9-8666-cfbbd1fa312b",
+        "title": "2901 Diamonds (2485 + 416 Bonus)",
+        "price": 638400,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "b6ecd683-0d3a-4238-ac34-cfa5c7956c89",
+        "title": "3688 Diamonds (3099 + 589 Bonus)",
+        "price": 798000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "0e521a07-ba96-4a50-acd0-53d76949379e",
+        "title": "4394 Diamonds (3724 + 670 Bonus)",
+        "price": 957500,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "e08edbbb-1c1a-419f-8013-59858e9d062d",
+        "title": "5532 Diamonds (4649 + 883 Bonus)",
+        "price": 1197000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "1f620fd4-b2f0-46f8-b762-7e0e750df4ef",
+        "title": "6238 Diamonds (5274 + 964 Bonus)",
+        "price": 1356600,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "5fba5ed2-3d27-4daf-b2a3-0a9b1e0bf4b0",
+        "title": "7727 Diamonds (6509 + 1218 Bonus)",
+        "price": 1675800,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "304ddc7c-c26b-4a00-962c-7428b67fa747",
+        "title": "9288 Diamonds (7740 + 1548 Bonus)",
+        "price": 1995000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      },
+      {
+        "_id": "943c5b0b-7757-4ccf-a56c-861bfd30b331",
+        "title": "12976 Diamonds (10839 + 2137 Bonus)",
+        "price": 2793000,
+        "discount": 0,
+        "image": "../img/icons/diamond.webp"
+      }
+    ]
+  },
+  {
+    "_id": "0b196c9f-4b63-4e5d-b5f6-7be7b7bf877e",
+    "weekly_pass": [
+      {
+        "_id": "1aee0b3a-c838-4c37-8a59-163a15680694",
+        "title": "Weekly Diamonds Pass (Event Top Up +100)",
+        "price": 26000,
+        "discount": 0,
+        "image": "../img/icons/weekly_pass.webp"
+      },
+      {
+        "_id": "5f8a5140-c7aa-4157-ba65-eaf345f98c22",
+        "title": "Weekly Diamonds Pass x2 (Event Top Up +200)",
+        "price": 52000,
+        "discount": 0,
+        "image": "../img/icons/weekly_pass.webp"
+      },
+      {
+        "_id": "5f8a5140-c7aa-4157-ba65-eaf345f98c22",
+        "title": "Weekly Diamonds Pass x3 (Event Top Up +300)",
+        "price": 78000,
+        "discount": 0,
+        "image": "../img/icons/weekly_pass.webp"
+      },
+      {
+        "_id": "5f8a5140-c7aa-4157-ba65-eaf345f98c22",
+        "title": "Weekly Diamonds Pass x4 (Event Top Up +400)",
+        "price": 104000,
+        "discount": 0,
+        "image": "../img/icons/weekly_pass.webp"
+      },
+      {
+        "_id": "5f8a5140-c7aa-4157-ba65-eaf345f98c22",
+        "title": "Weekly Diamonds Pass x5 (Event Top Up +500)",
+        "price": 130000,
+        "discount": 1.92,
+        "image": "../img/icons/weekly_pass.webp"
+      }
+    ]
+  },
+  {
+    "_id": "5a673c86-f72a-4508-a702-2cc0122cd618",
+    "twilight_pass": [
+      {
+        "_id": "b4984b2b-6345-4eb4-8586-8361d803cb28",
+        "title": "Twilight Pass",
+        "price": 135000,
+        "discount": 0,
+        "image": "../img/icons/twilight_pass.webp"
+      }
+    ]
+  }
+]
