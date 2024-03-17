@@ -1349,7 +1349,7 @@
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body text-center py-3">
-                    <h5>Berhasil Membuat Invoice</h5>
+                    <h5>Terimakasih sudah order</h5>
                     <h3 class="text-success">
                         {{ $nomorInvoice }}
                     </h3>
