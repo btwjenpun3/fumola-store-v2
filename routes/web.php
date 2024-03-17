@@ -11,6 +11,8 @@ use App\Http\Controllers\Realm\ReportProfitController;
 use App\Http\Controllers\Realm\TopUpController;
 use App\Http\Controllers\Realm\TransaksiController;
 use App\Http\Controllers\Realm\UserController;
+use App\Http\Controllers\RedisController;
+use App\Http\Controllers\Web\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,13 +30,15 @@ use Illuminate\Support\Facades\Route;
  * Route untuk Web 
  */
 
- Route::get('/', function() {
-    return view('web.pages.home');
- });
+ Route::get('/', [RedisController::class, 'webHomePage']);
 
- Route::get('/order', function() {
-    return view('web.pages.order');
- });
+ Route::prefix('/top-up')
+    ->name('top-up.')
+    ->controller(OrderController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
 
  Route::prefix('/generate')
     ->name('generate.')

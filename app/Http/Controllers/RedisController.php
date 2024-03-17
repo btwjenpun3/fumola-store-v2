@@ -16,4 +16,12 @@ class RedisController extends Controller
 
         return $data;
     }
+
+    public function webHomepage()
+    {
+        $home = Cache::remember('web_home_page', 180, function () {
+            return view('web.pages.home');
+        });        
+        return $home;
+    }
 }
