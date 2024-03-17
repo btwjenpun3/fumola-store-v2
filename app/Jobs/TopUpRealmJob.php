@@ -41,13 +41,9 @@ class TopUpRealmJob implements ShouldQueue
 
     /**
      * Execute the job.
-     */
-    public function stop()
-    {
-        return false;
-    }
+     */   
     
-    public function handle(): void
+    public function handle()
     {
         try { 
         $data = Harga::where('kode_produk', $this->productCode)->first();         
@@ -126,6 +122,7 @@ class TopUpRealmJob implements ShouldQueue
                                 ]);
                                 event(new TopUpEventFailed($this->authId, 'Harga Jual di bawah Harga Modal! Transaksi di batalkan!')); 
                                 $this->fail();
+                                return false;
                             }
                         } else if($this->authUser->role->name == 'reseller') {
                             if($data->harga_jual_reseller < $cekOffline['data'][0]['price']) {
