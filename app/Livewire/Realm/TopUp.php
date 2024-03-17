@@ -372,7 +372,8 @@ class TopUp extends Component
                         $this->dispatch('error', 'Terdapat masalah saat proses pengisian!'); 
                     }  
                 } else {                    
-                    $this->dispatch('error', 'Password Akun Realm Kamu Salah!');                               
+                    $this->dispatch('error', 'Password Akun Realm Kamu Salah!');   
+                    $this->dispatch('topup-failed');                            
                 }
             } else {
                 $this->dispatch('error', 'Denom ini sedang Offline, silahkan pilih Denom yang lain');                 
