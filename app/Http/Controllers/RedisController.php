@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 
 class RedisController extends Controller
@@ -20,7 +21,7 @@ class RedisController extends Controller
     public function webHomepage()
     {
         $home = Cache::remember('web_home_page', 180, function () {
-            return view('web.pages.home');
+            return View::make('web.pages.home')->render();
         });        
         return $home;
     }
