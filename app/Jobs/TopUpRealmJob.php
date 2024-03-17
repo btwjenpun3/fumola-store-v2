@@ -54,7 +54,7 @@ class TopUpRealmJob implements ShouldQueue
                         if($user->saldo <= $data->harga_jual_reseller ) {
                             event(new TopUpEventFailed($this->authId, 'Saldo Kamu Kurang! Harap Recharge Saldo Kamu Lagi!')); 
                             $this->release(now()->addYear(10));
-                            return;
+                            $this->userId = null;
                         }
                     }                  
                     if(isset($this->customerField)) {
