@@ -45,8 +45,11 @@
                 </div>
                 <div class="col-span-3 flex flex-col space-y-8 md:col-span-2">
                     <div class="col-span-2 space-y-4">
-
-                        @livewire('web.order.player-info-1-form')
+                        @if ($game->form === 1)
+                            @livewire('web.order.player-info-1-form', ['game' => $game])
+                        @elseif($game->form === 2)
+                            @livewire('web.order.player-info-2-form', ['game' => $game])
+                        @endif
 
                         @livewire('web.order.nominal', ['game' => $game])
 

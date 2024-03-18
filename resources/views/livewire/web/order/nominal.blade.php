@@ -33,7 +33,8 @@
                     @foreach ($umum as $u)
                         <li class="relative" role="radio" aria-checked="false" tabindex="0">
                             <input type="radio" id="{{ $u->id }}" name="items" value="{{ $u->id }}"
-                                class="peer hidden" wire:click="$dispatch('set-harga', { harga: {{ $u->harga_jual }}})">
+                                class="peer hidden"
+                                wire:click="$dispatch('set-harga', { harga: {{ $u->harga_jual }}, kode: '{{ $u->kode_produk }}'})">
                             <label for="{{ $u->id }}"
                                 class="group relative flex cursor-pointer overflow-hidden border border-transparent bg-[#303740] rounded-lg p-3 outline-none peer-checked:bg-primary-700 peer-checked:ring-2 peer-checked:ring-[#303740] md:p-4">
                                 <span class="flex flex-1">
@@ -68,7 +69,7 @@
                         <li class="relative" role="radio" aria-checked="false" tabindex="0">
                             <input type="radio" id="{{ $m->id }}" name="items" value="{{ $m->id }}"
                                 class="peer hidden"
-                                wire:click="$dispatch('set-harga', { harga: {{ $m->harga_jual }}})">
+                                wire:click="$dispatch('set-harga', { harga: {{ $m->harga_jual }}, kode: '{{ $m->kode_produk }}'})">
                             <label for="{{ $m->id }}"
                                 class="group relative flex cursor-pointer overflow-hidden border border-transparent bg-[#303740] rounded-lg p-3 outline-none peer-checked:bg-primary-700 peer-checked:ring-2 peer-checked:ring-[#303740] md:p-4">
                                 <span class="flex flex-1">
@@ -100,6 +101,38 @@
             <div class="hidden" id="twilight" role="tabpanel" aria-labelledby="twilight-tab">
                 <ul id="twilightList"
                     class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
+                    @foreach ($la1 as $u)
+                        <li class="relative" role="radio" aria-checked="false" tabindex="0">
+                            <input type="radio" id="{{ $u->id }}" name="items"
+                                value="{{ $u->id }}" class="peer hidden"
+                                wire:click="$dispatch('set-harga', { harga: {{ $u->harga_jual }}, kode: '{{ $u->kode_produk }}'})">
+                            <label for="{{ $u->id }}"
+                                class="group relative flex cursor-pointer overflow-hidden border border-transparent bg-[#303740] rounded-lg p-3 outline-none peer-checked:bg-primary-700 peer-checked:ring-2 peer-checked:ring-[#303740] md:p-4">
+                                <span class="flex flex-1">
+                                    <span class="flex flex-col justify-between">
+                                        <span
+                                            class="block min-h-[32px] text-sm font-semibold text-white">{{ $u->nama_produk }}</span>
+                                        <span
+                                            class="mt-1 flex items-center text-xs font-light text-gray-200">{{ $call->formatRupiah($u->harga_jual) }},-</span>
+                                    </span>
+                                </span>
+                                <div class="flex aspect-square w-8 items-center">
+                                    <img src="{{ asset(Storage::url($u->gambar)) }}" width="300" height="300"
+                                        class="object-contain object-right" style="color: transparent"
+                                        alt="Logo">
+                                </div>
+                            </label>
+                            <div
+                                class="absolute right-0 top-0 rounded-bl-full overflow-hidden rounded-tr-[2000px] bg-[#303740] p-1 pb-2 pl-2 text-white hidden peer-checked:block">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
+                                    height="12" width="12" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -26,14 +26,8 @@
                 <div class="relative rounded-md text-black shadow-sm">
                     <input
                         class="block h-9 w-full rounded-lg border-gray-300 text-xs shadow-sm focus:border-primary-700 focus:ring-primary-700 sm:text-sm"
-                        placeholder="Masukkan User ID" type="text" wire:model.live.debounce.250ms="userId" />
-                </div>
-            </div>
-            <div class="col-span-1 w-full">
-                <div class="relative rounded-md text-black shadow-sm">
-                    <input
-                        class="block h-9 w-full rounded-lg border-gray-300 text-xs shadow-sm focus:border-primary-700 focus:ring-primary-700 sm:text-sm"
-                        placeholder="Masukkan Server" type="text" wire:model.live.debounce.250ms="serverId" />
+                        @if ($game->kategori === 'Pulsa' || $game->kategori === 'Voucher' || $game->kategori === 'Listrik') placeholder="Masukkan Nomor Telepon" @else placeholder="Masukkan User ID" @endif
+                        type="text" wire:model.live.debounce.250ms="userId" />
                 </div>
             </div>
         </div>

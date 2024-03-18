@@ -177,7 +177,7 @@
                         class="flex w-full items-center justify-between px-4 py-2.5 text-left text-base font-medium !bg-[#1c2025] text-white hover:bg-[#1c2025]"
                         data-accordion-target="#convenience-accordion-body" aria-expanded="false"
                         aria-controls="convenience-accordion-body">
-                        <span>Toserba</span>
+                        <span>Outlet</span>
                         <svg data-accordion-icon class="h-6 w-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -196,7 +196,7 @@
                             class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
                             <li class="relative" role="radio" aria-checked="false" tabindex="0">
                                 <input type="radio" id="alfa" name="payment" value="alfa"
-                                    class="peer hidden">
+                                    class="peer hidden" wire:click="$dispatch('set-payment', { payment: 'ALFAMART'})">
                                 <label for="alfa"
                                     class="group relative flex cursor-pointer items-end overflow-hidden rounded-lg border border-transparent bg-white p-2.5 text-gray-700 outline-none peer-checked:ring-2 peer-checked:ring-primary-700 md:p-3">
                                     <span class="flex flex-1">

@@ -20,6 +20,8 @@ class Produk extends Component
 
     public $nama_produk, $brand_produk, $kategori_produk, $kode_produk, $gambar_produk;
 
+    public $produk_form, $form;
+
     public $tipe = [];
 
     public $modal = [];
@@ -206,6 +208,22 @@ class Produk extends Component
         } catch (\Exception $e) {
             $this->dispatch('gagal', $e->getMessage());
         }
+    }
+
+    public function setting($id)
+    {
+        $data = Game::where('id', $id)->first();
+        $this->id = $id;
+        $this->form = $data->form;   
+        $this->produk_form = $data->nama;     
+    }
+
+    public function saveSetting()
+    {
+        Game::where('id', $this->id)->update([
+            'form' => $this->form
+        ]);     
+        $this->dispatch('berhasil', 'Set Form berhasil');
     }
 
     public function render()

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GenerateProductController;
 use App\Http\Controllers\Realm\DashboardController;
 use App\Http\Controllers\Realm\InvoiceController;
+use App\Http\Controllers\Web\InvoiceController as InvoiceWeb;
 use App\Http\Controllers\Realm\PaymentController;
 use App\Http\Controllers\Realm\ProdukController;
 use App\Http\Controllers\Realm\ReportController;
@@ -45,6 +46,13 @@ Route::get('/', [RedisController::class, 'webHomePage']);
     ->controller(OrderController::class)
     ->group(function () {
         Route::get('/{slug}', 'index')->name('index');
+    });
+
+Route::prefix('/invoice')
+    ->name('invoice.')
+    ->controller(InvoiceWeb::class)
+    ->group(function () {
+        Route::get('/{id}', 'index')->name('index');
     });
 
 

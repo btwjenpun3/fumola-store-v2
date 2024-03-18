@@ -11,7 +11,7 @@
             <div class="relative rounded-md shadow-sm">
                 <input min="5" type="text" name="phoneNumber" placeholder="08xxxxxxxxx"
                     class="block w-full rounded-lg border-gray-300 text-black shadow-sm focus:border-primary-700 focus:ring-primary-700 sm:text-sm"
-                    value="" />
+                    wire:model="phone">
                 <p class="mt-2 text-xs text-white/70">
                     Bukti pembelianmu akan kami kirimkan ke WhatsApp. Pastikan nomor
                     handphone yang di input aktif
@@ -64,11 +64,9 @@
                             </div>
                             <div class="flex justify-between break-all">
                                 <h4 class="flex-1 text-white">ZONE ID :</h4>
-                                <h4 class="flex-1 text-right font-bold text-white">15954</h4>
-                            </div>
-                            <div class="flex justify-between break-all">
-                                <h4 class="flex-1 text-white">USERNAME :</h4>
-                                <h4 class="flex-1 text-right font-bold text-white">tubagusco</h4>
+                                <h4 class="flex-1 text-right font-bold text-white">
+                                    <div id="finalServerId"></div>
+                                </h4>
                             </div>
                         </div>
                         <div class="mt-2 space-y-2">
@@ -84,7 +82,9 @@
                             </div>
                             <div class="flex justify-between break-words">
                                 <h4 class="flex-1 text-white">Nomor WhatsApp:</h4>
-                                <h4 class="flex-1 text-right font-bold text-white">081385201032</h4>
+                                <h4 class="flex-1 text-right font-bold text-white">
+                                    <div id="phone"></div>
+                                </h4>
                             </div>
                             <div class="flex justify-between break-words">
                                 <h4 class="flex-1 text-white">Sistem Pembayaran:</h4>
@@ -97,7 +97,8 @@
                 </div>
                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                     <button
-                        class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:opacity-80 focus:outline-none disabled:cursor-not-allowed sm:ml-3 sm:w-auto sm:text-sm">
+                        class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:opacity-80 focus:outline-none disabled:cursor-not-allowed sm:ml-3 sm:w-auto sm:text-sm"
+                        wire:click="process" wire:loading.attr="disabled">
                         Beli Sekarang
                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
                             aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -120,20 +121,38 @@
             $wire.on('final-user-id-set', (data) => {
                 document.getElementById('finalUserId').innerText = data;
             });
+            $wire.on('final-server-id-set', (data) => {
+                document.getElementById('finalServerId').innerText = data;
+            });
             $wire.on('final-price-set', (data) => {
                 document.getElementById('finalPrice').innerText = formatRupiah(data);
             });
             $wire.on('final-payment-method-set', (data) => {
                 document.getElementById('finalPaymentMethod').innerText = data;
             });
+            $wire.on('final-phone-id-set', (data) => {
+                document.getElementById('phone').innerText = data;
+            });
+            $wire.on('success', (data) => {
+                Toastify({
+                    text: data,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                        background: "green",
+                    }
+                }).showToast();
+            });
             $wire.on('requirement-not-meet', (data) => {
                 Toastify({
                     text: data,
                     duration: 3000,
                     close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
                     style: {
                         background: "red",
                     }

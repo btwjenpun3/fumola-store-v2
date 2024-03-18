@@ -4,7 +4,7 @@ namespace App\Livewire\Web\Order;
 
 use Livewire\Component;
 
-class PlayerInfo1Form extends Component
+class PlayerInfo2Form extends Component
 {
     public  $game; 
 
@@ -26,10 +26,10 @@ class PlayerInfo1Form extends Component
     {
         $this->dispatch('set-server-id', $value);
     }
-
+    
     public function render()
     {
-        return view('livewire.web.order.player-info1-form', [
+        return view('livewire.web.order.player-info2-form', [
             'game' => $this->game
         ]);
     }
