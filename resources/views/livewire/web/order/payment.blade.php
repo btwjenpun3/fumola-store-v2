@@ -58,7 +58,7 @@
                                 <li class="relative" role="radio" aria-checked="false" tabindex="0">
                                     <input type="radio" id="{{ $e->payment_method }}" name="payment"
                                         value="{{ $e->payment_method }}" class="peer hidden"
-                                        wire:click="applyPaymentMethod('{{ $e->payment_method }}')">
+                                        wire:click="$dispatch('set-payment', { payment: '{{ $e->payment_method }}'})">
                                     <label for="{{ $e->payment_method }}"
                                         class="group relative flex cursor-pointer items-end overflow-hidden rounded-lg border border-transparent bg-white p-2.5 text-gray-700 outline-none peer-checked:ring-2 peer-checked:ring-primary-700 md:p-3">
                                         <span class="flex flex-1">
@@ -134,7 +134,8 @@
                             @foreach ($va as $v)
                                 <li class="relative" role="radio" aria-checked="false" tabindex="0">
                                     <input type="radio" id="{{ $v->payment_method }}" name="payment"
-                                        value="{{ $v->payment_method }}" class="peer hidden" />
+                                        value="{{ $v->payment_method }}" class="peer hidden"
+                                        wire:click="$dispatch('set-payment', { payment: '{{ $v->payment_method }}'})">
                                     <label for="{{ $v->payment_method }}"
                                         class="group relative flex cursor-pointer items-end overflow-hidden rounded-lg border border-transparent bg-white p-2.5 text-gray-700 outline-none peer-checked:ring-2 peer-checked:ring-primary-700 md:p-3">
                                         <span class="flex flex-1">
@@ -144,7 +145,7 @@
                                                     style="color: transparent" alt="Logo" />
                                                 <span
                                                     class="block min-h-[32px] text-sm font-semibold text-black w-full">
-                                                    Rp 62.850,-
+                                                    <div id="{{ $v->payment_method }}_"></div>
                                                 </span>
                                                 <span
                                                     class="flex flex-wrap border-t-2 pt-2 text-xs font-semibold w-full">
@@ -195,7 +196,7 @@
                             class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
                             <li class="relative" role="radio" aria-checked="false" tabindex="0">
                                 <input type="radio" id="alfa" name="payment" value="alfa"
-                                    class="peer hidden" />
+                                    class="peer hidden">
                                 <label for="alfa"
                                     class="group relative flex cursor-pointer items-end overflow-hidden rounded-lg border border-transparent bg-white p-2.5 text-gray-700 outline-none peer-checked:ring-2 peer-checked:ring-primary-700 md:p-3">
                                     <span class="flex flex-1">
@@ -232,25 +233,40 @@
     @script
         <script>
             $wire.on('update-qris', (data) => {
-                document.getElementById('QRIS_').innerText = data;
+                document.getElementById('QRIS_').innerText = formatRupiah(data);
             });
             $wire.on('update-dana', (data) => {
-                document.getElementById('ID_DANA_').innerText = data;
+                document.getElementById('ID_DANA_').innerText = formatRupiah(data);
             });
             $wire.on('update-shopee', (data) => {
-                document.getElementById('ID_SHOPEEPAY_').innerText = data;
+                document.getElementById('ID_SHOPEEPAY_').innerText = formatRupiah(data);
             })
             $wire.on('update-link-aja', (data) => {
-                document.getElementById('ID_LINKAJA_').innerText = data;
+                document.getElementById('ID_LINKAJA_').innerText = formatRupiah(data);
             })
             $wire.on('update-astra-pay', (data) => {
-                document.getElementById('ID_ASTRAPAY_').innerText = data;
+                document.getElementById('ID_ASTRAPAY_').innerText = formatRupiah(data);
             })
             $wire.on('update-ovo', (data) => {
-                document.getElementById('ID_OVO_').innerText = data;
+                document.getElementById('ID_OVO_').innerText = formatRupiah(data);
             })
-            $wire.on('update-aflamart', (data) => {
-                document.getElementById('ALFAMART_').innerText = data;
+            $wire.on('update-bca', (data) => {
+                document.getElementById('BCA_').innerText = formatRupiah(data);
+            })
+            $wire.on('update-bni', (data) => {
+                document.getElementById('BNI_').innerText = formatRupiah(data);
+            })
+            $wire.on('update-bri', (data) => {
+                document.getElementById('BRI_').innerText = formatRupiah(data);
+            })
+            $wire.on('update-bjb', (data) => {
+                document.getElementById('BJB_').innerText = formatRupiah(data);
+            })
+            $wire.on('update-bsi', (data) => {
+                document.getElementById('BSI_').innerText = formatRupiah(data);
+            })
+            $wire.on('update-alfamart', (data) => {
+                document.getElementById('ALFAMART_').innerText = formatRupiah(data);
             });
         </script>
     @endscript

@@ -14,6 +14,18 @@ class Payment extends Component
     public function mount()
     {
         $this->hargaQris = 0;
+        $this->hargaDana = 0;
+        $this->hargaShopee = 0;
+        $this->hargaLinkAja = 0;
+        $this->hargaAstraPay = 0;
+        $this->hargaBca = 0;
+        $this->hargaBni = 0;
+        $this->hargaBri = 0;
+        $this->hargaBjb = 0;
+        $this->hargaBsi = 0;
+        $this->hargaAlfamart = 0;
+        $this->hargaIndomaret = 0;
+        $this->hargaOvo = 0;        
     }
 
     #[On('set-harga')]
@@ -48,78 +60,44 @@ class Payment extends Component
                     break;
                 case 'BCA':
                     $this->hargaBca = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-bca', $this->hargaBca);
                     break;
                 case 'BNI':
                     $this->hargaBni = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-bni', $this->hargaBni);
                     break;
                 case 'BRI':
                     $this->hargaBri = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-bri', $this->hargaBri);
                     break;
                 case 'BJB':
                     $this->hargaBjb = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-bjb', $this->hargaBjb);
                     break;
                 case 'BSI':
                     $this->hargaBsi = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-bsi', $this->hargaBsi);
                     break;
                 case 'ALFAMART':
                     $this->hargaAlfamart = round($harga + $admin->admin_fee_fixed);
-                    $this->dispatch('update-aflamart', $this->hargaAlfamart);
+                    $this->dispatch('update-alfamart', $this->hargaAlfamart);
                     break;
                 case 'INDOMARET':
                     $this->hargaIndomaret = round($harga + $admin->admin_fee_fixed);
+                    $this->dispatch('update-indomaret', $this->hargaIndomaret);
                     break;
             }            
         }  
     }    
 
-    public function applyPaymentMethod($paymentMethod)
-    {
-        switch ($paymentMethod) {
-            case 'QRIS':
-                $hargaAkhir = $this->hargaQris;   
-                break;             
-            case 'ID_DANA':
-                $hargaAkhir = $this->hargaDana;
-                break;
-            case 'ID_SHOPEEPAY':
-                $hargaAkhir = $this->hargaShopee;
-                break;
-            case 'ID_LINKAJA':
-                $hargaAkhir = $this->hargaLinkAja;
-                break;
-            case 'ID_ASTRAPAY':
-                $hargaAkhir = $this->hargaAstraPay;
-                break;
-            case 'ID_OVO':
-                $hargaAkhir = $this->hargaOvo;
-                break;
-            case 'BCA':
-                $hargaAkhir = $this->hargaBca;
-                break;
-            case 'BNI':
-                $hargaAkhir = $this->hargaBni;
-                break;
-            case 'BRI':
-                $hargaAkhir = $this->hargaBri;
-                break;
-            case 'BJB':
-                $hargaAkhir = $this->hargaBjb;
-                break;
-            case 'BSI':
-                $hargaAkhir = $this->hargaBsi;
-                break;
-            case 'ALFAMART':
-                $hargaAkhir = $this->hargaAlfamart;
-                break;
-            case 'INDOMARET':
-                $hargaAkhir = $this->hargaIndomaret;
-                break;
-        }
-        $this->dispatch('final-price', [
-            'paymentMethod' => $paymentMethod,
-            'hargaAkhir' => $hargaAkhir
-        ]);
-    }
+    // #[On('set-harga')]
+    // public function applyPaymentMethod($harga)
+    // {        
+    //     $this->dispatch('final-price', [
+    //         'paymentMethod' => $paymentMethod,
+    //         'hargaAkhir' => $hargaAkhir
+    //     ]);
+    // }
 
     public function render()
     {        

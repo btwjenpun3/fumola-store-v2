@@ -18,9 +18,10 @@
                 </p>
             </div>
         </div>
-        <button type="button" data-modal-target="confirmation-modal" data-modal-toggle="confirmation-modal"
+        <button type="button"
             class="inline-flex mt-4 items-center gap-2 rounded-lg border border-transparent bg-primary-700 px-6 py-3 text-sm font-medium leading-4 text-white shadow-sm hover:opacity-80 focus:outline-none disabled:cursor-not-allowed"
-            wire:click="confirm">
+            data-modal-target="confirmation-modal" data-modal-toggle="confirmation-modal" wire:click="confirm"
+            wire:loading.attr="disabled">
             Konfirmasi Top Up
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true"
                 class="ml-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -30,6 +31,7 @@
             </svg>
         </button>
     </section>
+
     <!-- Confirmation Modal -->
     <div id="confirmation-modal" tabindex="-1"
         class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
@@ -56,7 +58,9 @@
                             </div>
                             <div class="flex justify-between break-all">
                                 <h4 class="flex-1 text-white">USER ID :</h4>
-                                <h4 class="flex-1 text-right font-bold text-white">1436372992</h4>
+                                <h4 class="flex-1 text-right font-bold text-white">
+                                    <div id="finalUserId"></div>
+                                </h4>
                             </div>
                             <div class="flex justify-between break-all">
                                 <h4 class="flex-1 text-white">ZONE ID :</h4>
@@ -113,11 +117,27 @@
 
     @script
         <script>
+            $wire.on('final-user-id-set', (data) => {
+                document.getElementById('finalUserId').innerText = data;
+            });
             $wire.on('final-price-set', (data) => {
-                document.getElementById('finalPrice').innerText = data;
+                document.getElementById('finalPrice').innerText = formatRupiah(data);
             });
             $wire.on('final-payment-method-set', (data) => {
                 document.getElementById('finalPaymentMethod').innerText = data;
+            });
+            $wire.on('requirement-not-meet', (data) => {
+                Toastify({
+                    text: data,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "red",
+                    }
+                }).showToast();
             });
         </script>
     @endscript
