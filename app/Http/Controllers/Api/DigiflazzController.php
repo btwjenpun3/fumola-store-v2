@@ -42,7 +42,8 @@ class DigiflazzController extends Controller
                                     'saldo' => $potongSaldo
                                 ]); 
                             }   
-                        }                                                                    
+                        }
+                        event(new TopUpSuccess($invoice->nomor_invoice, 'Pembelian produk (' . $invoice->harga->nama_produk . ') berhasil! (SN : ' . $payload['data']['sn'] . ')'));                                                                    
                         return response()->json(200);
                     }
                 } else if ($payload['data']['status'] == 'Pending') {
