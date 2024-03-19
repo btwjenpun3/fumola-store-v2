@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 
 class Produk extends Component
@@ -267,7 +268,7 @@ class Produk extends Component
                 '_id' => $g->id,
                 'title' => $g->nama,
                 'production' => $g->brand,
-                'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                'image' => asset(Storage::url($g->url_gambar)),
                 'url' => '/top-up/' . $g->slug
             ];
             if($g->kategori === 'Games') {            
@@ -275,7 +276,7 @@ class Produk extends Component
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'image' => asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Voucher') {          
@@ -283,7 +284,7 @@ class Produk extends Component
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'image' => asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Pulsa') {          
@@ -291,7 +292,7 @@ class Produk extends Component
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'image' => asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             }
