@@ -23,7 +23,7 @@ class QrSimulate extends Component
             'api-version' => '2022-07-31',
             'Content-Type' => 'application/json',
         ])->post('https://api.xendit.co/qr_codes/ ' . $data->xendit_invoice_id . '/payments/simulate', [
-            'amount' => 10000
+            'amount' => integerValue($data->total)
         ]);
     }
 
