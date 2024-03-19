@@ -19,12 +19,14 @@ class QrSimulate extends Component
     {
         $data = Invoice::where('nomor_invoice', $this->invoice)->first();
 
-        Http::withHeaders([
+        $response = Http::withHeaders([
             'api-version' => '2022-07-31',
             'Content-Type' => 'application/json',
         ])->post('https://api.xendit.co/qr_codes/ ' . $data->xendit_invoice_id . '/payments/simulate', [
             'amount' => integerValue($data->total)
         ]);
+
+        dd($response);
     }
 
     public function render()
