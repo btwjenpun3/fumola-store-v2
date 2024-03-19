@@ -27,7 +27,7 @@ class QrSimulate extends Component
             'amount' => $data->total
         ]);
 
-        dd($response->json());
+        dd($data->xendit_invoice_id);
     }
 
     public function render()
