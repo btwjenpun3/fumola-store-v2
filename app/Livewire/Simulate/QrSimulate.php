@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Simulate;
 
+use App\Events\TopUpEvent;
+use App\Events\TopUpSuccess;
 use App\Models\Invoice;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
@@ -19,15 +21,14 @@ class QrSimulate extends Component
     {
         $data = Invoice::where('nomor_invoice', $this->invoice)->first();
 
-        $response = Http::withHeaders([
-            'api-version' => '2022-07-31',
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Basic ' . base64_encode(env('XENDIT_SECRET_KEY') . ':'),
-        ])->post('https://api.xendit.co/qr_codes/ ' . $data->xendit_invoice_id . '/payments/simulate', [
-            'amount' => $data->total
-        ]);
+        event(new TopUpEvent($this->invoice, 'OKE'));
+    }
 
-        dd($data->xendit_invoice_id);
+    public function simulatee()
+    {
+        $data = Invoice::where('nomor_invoice', $this->invoice)->first();
+
+        event(new TopUpSuccess($this->invoice, 'OKE'));
     }
 
     public function render()

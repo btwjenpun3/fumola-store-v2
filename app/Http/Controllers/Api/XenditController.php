@@ -26,6 +26,7 @@ class XenditController extends Controller
                             'status' => 'PAID',
                             'webhook_id' => $request->header('webhook-id')
                         ]);
+                        event(new TopUpEvent($invoice->nomor_invoice, 'Pembayaran berhasil, harap tunggu kami sedang memproses pesanan kamu'));
                         dispatch(new DigiflazzProcessJob($invoice, $invoice->harga->kode_produk, $invoice->nomor_invoice, $invoice->customer));
                         return response()->json(200);                         
                     } else {
@@ -62,6 +63,7 @@ class XenditController extends Controller
                             'status' => 'PAID',
                             'webhook_id' => $request->header('webhook-id')
                         ]);
+                        event(new TopUpEvent($invoice->nomor_invoice, 'Pembayaran berhasil, harap tunggu kami sedang memproses pesanan kamu')); 
                         dispatch(new DigiflazzProcessJob($invoice, $invoice->harga->kode_produk, $invoice->nomor_invoice, $invoice->customer));
                         return response()->json(200); 
                     } else {
@@ -100,6 +102,7 @@ class XenditController extends Controller
                         $invoice->va()->update([
                             'xendit_va_payment_id' => $response['payment_id'],
                         ]);
+                        event(new TopUpEvent($invoice->nomor_invoice, 'Pembayaran berhasil, harap tunggu kami sedang memproses pesanan kamu'));
                         dispatch(new DigiflazzProcessJob($invoice, $invoice->harga->kode_produk, $invoice->nomor_invoice, $invoice->customer));
                         return response()->json(200); 
                     } else {
@@ -142,6 +145,7 @@ class XenditController extends Controller
                             'fixed_payment_code_payment_id' => $response['fixed_payment_code_payment_id'],
                             'fixed_payment_code_id' => $response['fixed_payment_code_id']                            
                         ]);
+                        event(new TopUpEvent($invoice->nomor_invoice, 'Pembayaran berhasil, harap tunggu kami sedang memproses pesanan kamu'));
                         dispatch(new DigiflazzProcessJob($invoice, $invoice->harga->kode_produk, $invoice->nomor_invoice, $invoice->customer));
                         return response()->json(200); 
                     } else {

@@ -8,6 +8,7 @@ use App\Models\Invoice;
 use App\Events\TopUpEvent;
 use App\Events\TopUpEventFailed;
 use App\Events\TopUpFailEvent;
+use App\Events\TopUpSuccess;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
@@ -34,7 +35,7 @@ class DigiflazzController extends Controller
                             $invoice->update([
                                 'status' => 'PAID'
                             ]);
-                            event(new TopUpEvent('Pembelian produk (' . $invoice->harga->nama_produk . ') berhasil! (SN : ' . $payload['data']['sn'] . ')', $invoice->realm_user_id));
+                            event(new TopUpSuccess($invoice->realm_user_id, 'Pembelian produk (' . $invoice->harga->nama_produk . ') berhasil! (SN : ' . $payload['data']['sn'] . ')'));
                             if($invoice->user->role_id == 2) {
                                 $potongSaldo = $invoice->user->saldo - $invoice->harga->harga_jual_reseller;
                                 User::where('id', $invoice->realm_user_id)->update([
