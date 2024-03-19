@@ -14,8 +14,7 @@
                         <article class="shadow-9xl relative flex-1 bg-secondary-900 px-4 pb-6 pt-2 sm:rounded-lg lg:block">
                             <div class="relative flex items-center">
                                 <div class="top-0 z-10 inline-block h-auto w-auto rounded-3xl py-2 px-0 lg:px-3 -mt-12">
-                                    <img src="https://sin1.contabostorage.com/0a986eb902c4469cb860e43985eb18a1:vocapanel/vcash/mobilelegends-4702-original-70c3-original.webp"
-                                        alt="Mobile Legends: Bang Bang"
+                                    <img src="{{ asset(Storage::url($game->url_gambar)) }}" alt="Mobile Legends: Bang Bang"
                                         class="h-auto w-32 rounded-2xl object-cover md:w-[130px]" />
                                 </div>
                                 <div class="ml-3 lg:ml-0">
@@ -26,7 +25,7 @@
                             <div class="max-h-32 transition-all">
                                 <article
                                     class="h-32 overflow-hidden prose prose-headings:m-0 prose-h1:text-base prose-h2:text-base prose-h3:text-sm prose-h4:text-sm prose-p:m-0 prose-p:text-xs prose-li:m-0 prose-li:text-xs">
-                                    <p class="text-white !my-2">Cara Pesan Top Up Diamond {{ $game->nama }} :</p>
+                                    <p class="text-white !my-2">Cara Pesan Top Up {{ $game->nama }} Murah dan Cepat :</p>
                                     <ol class="m-0">
                                         <li class="text-white">Masukkan ID &amp; Server</li>
                                         <li class="text-white">Pilih Item</li>

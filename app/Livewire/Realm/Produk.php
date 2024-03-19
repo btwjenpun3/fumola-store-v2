@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\Validate;
 
 class Produk extends Component
 {
@@ -20,7 +21,10 @@ class Produk extends Component
 
     public $nama_produk, $brand_produk, $kategori_produk, $kode_produk, $gambar_produk;
 
-    public $produk_form, $form;
+    public $produk_form, $form, $gambar;
+
+    #[Validate('mimes:webp,png|max:128')]
+    public $gambar_baru;
 
     public $tipe = [];
 
@@ -215,15 +219,19 @@ class Produk extends Component
         $data = Game::where('id', $id)->first();
         $this->id = $id;
         $this->form = $data->form;   
-        $this->produk_form = $data->nama;     
+        $this->produk_form = $data->nama;    
+        $this->gambar = $data->url_gambar; 
     }
 
     public function saveSetting()
     {
+        $data = Game::where('id', $this->id)->first();
+        $gambar = $this->gambar_baru->storeAs('games', $data->slug . '.webp', 'public');
         Game::where('id', $this->id)->update([
+            'url_gambar' => $gambar,
             'form' => $this->form
         ]);     
-        $this->dispatch('berhasil', 'Set Form berhasil');
+        $this->dispatch('berhasil', 'Ubah Setting berhasil');
     }
 
     public function render()

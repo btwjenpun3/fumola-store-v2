@@ -372,15 +372,31 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="form-label required">Jumlah Form</label>
-                            <select class="form-select @error('form') is-invalid @enderror" wire:model="form">
-                                <option value="">-- Pilih --</option>
-                                <option value="1">1 Form (User ID)</option>
-                                <option value="2">2 Form (User ID dan Server ID)</option>
-                            </select>
-                            @error('form')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                            <div class="row">
+                                <div class="w-8 col-md-6">
+                                    <img src="{{ asset(Storage::url($gambar)) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">Upload Gambar</label>
+                                    <input type="file"
+                                        class="form-control @error('gambar_baru') is-invalid @enderror"
+                                        wire:model="gambar_baru">
+                                    @error('gambar_baru')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label class="form-label required">Jumlah Form</label>
+                                <select class="form-select @error('form') is-invalid @enderror" wire:model="form">
+                                    <option value="">-- Pilih --</option>
+                                    <option value="1">1 Form (User ID)</option>
+                                    <option value="2">2 Form (User ID dan Server ID)</option>
+                                </select>
+                                @error('form')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
