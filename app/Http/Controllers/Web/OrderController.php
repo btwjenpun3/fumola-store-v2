@@ -11,8 +11,17 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $game = Game::where('slug', $request->slug)->first();
-        return view('web.pages.order.order', [
-            'game' => $game
-        ]);
+        switch($game->status) {
+            case(0) :
+                abort(404);
+            break;            
+            case(1) :
+                return view('web.pages.order.order', [
+                    'game' => $game
+                ]);
+            break;            
+            default :
+                abort(404);
+        }        
     }
 }
