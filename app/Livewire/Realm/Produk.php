@@ -72,12 +72,12 @@ class Produk extends Component
         switch ($status) {
             case 1:
                 Game::where('id', $id)->update(['status' => 1]);
-                dispatch(new GenerateMock);
+                dispatch(new GenerateMock());
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             case 0:
                 Game::where('id', $id)->update(['status' => 0]);
-                dispatch(new GenerateMock);
+                dispatch(new GenerateMock());
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             default:
