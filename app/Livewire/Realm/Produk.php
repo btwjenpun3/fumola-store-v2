@@ -237,9 +237,8 @@ class Produk extends Component
 
     public function render()
     {        
-        $call = new RedisController;
         return view('livewire.realm.produk', [
-            'produk' => $call->game(),
+            'produk' => Game::orderBy('nama', 'asc')->get(),
             'hargas' => Game::when(isset($this->id), function ($query) {
                             $data = $query->where('id', $this->id)->first();
                             return $data->harga;
