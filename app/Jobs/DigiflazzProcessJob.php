@@ -67,8 +67,7 @@ class DigiflazzProcessJob implements ShouldQueue
             ]);
             $this->invoiceData->update([
                 'digiflazz_id' => $updateDigiflazz->id
-            ]);     
-            // event(new TopUpEvent($this->nomorInvoice, 'Pembayaran Berhasil'));                      
+            ]);                           
         } else {
             Log::channel('digiflazz')->error('Gagal:' . json_decode($digiflazz->getBody()->getContents(), true));            
         }
