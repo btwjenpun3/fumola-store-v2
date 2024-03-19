@@ -10,7 +10,7 @@ class GenerateProductController extends Controller
 {
     public function generate()
     {
-        $data = Game::orderBy('nama', 'asc')->get();
+        $data = Game::orderBy('nama', 'asc')->where('status', 1)->get();
         $path = public_path('mock/categories.json');
         $mock = [];  
         $all = []; 
