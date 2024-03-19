@@ -39,32 +39,32 @@ class GenerateMock implements ShouldQueue
                 '_id' => $g->id,
                 'title' => $g->nama,
                 'production' => $g->brand,
-                'image' => asset(Storage::url($g->url_gambar)),
-                'url' => env('APP_URL') . '/top-up/' . $g->slug
+                'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                'url' => '/top-up/' . $g->slug
             ];
             if($g->kategori === 'Games') {            
                 $game[] = [
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => env('APP_URL') . '/top-up/' . $g->slug
+                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Voucher') {          
                 $voucher[] = [
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => env('APP_URL') . '/top-up/' . $g->slug
+                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Pulsa') {          
                 $pulsa[] = [
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => env('APP_URL') . '/top-up/' . $g->slug
+                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'url' => '/top-up/' . $g->slug
                 ];
             }
         } 
