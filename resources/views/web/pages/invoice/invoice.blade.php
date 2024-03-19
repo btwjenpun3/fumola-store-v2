@@ -124,6 +124,7 @@
                             <div
                                 class="bg-secondary-950 flex flex-wrap items-center justify-between rounded-lg px-4 sm:px-6 py-5 shadow-sm">
                                 <div class="gap-8 break-all sm:flex">
+                                    @livewire('simulate.qr-simulate', ['invoice' => $data->nomor_invoice])
                                     <div class="flex flex-col flex-wrap">
                                         @php
                                             use Carbon\Carbon;
