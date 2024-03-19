@@ -39,7 +39,7 @@ class GenerateMock implements ShouldQueue
                 '_id' => $g->id,
                 'title' => $g->nama,
                 'production' => $g->brand,
-                'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                'image' => 'https://demo.fumolastore.id/' . asset(Storage::url($g->url_gambar)),
                 'url' => '/top-up/' . $g->slug
             ];
             if($g->kategori === 'Games') {            
@@ -47,7 +47,7 @@ class GenerateMock implements ShouldQueue
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'image' => 'https://demo.fumolastore.id/' . asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Voucher') {          
@@ -55,7 +55,7 @@ class GenerateMock implements ShouldQueue
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'image' => 'https://demo.fumolastore.id/' . asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Pulsa') {          
@@ -63,7 +63,7 @@ class GenerateMock implements ShouldQueue
                     '_id' => $g->id,
                     'title' => $g->nama,
                     'production' => $g->brand,
-                    'image' => env('APP_URL') . asset(Storage::url($g->url_gambar)),
+                    'image' => 'https://demo.fumolastore.id/' . asset(Storage::url($g->url_gambar)),
                     'url' => '/top-up/' . $g->slug
                 ];
             }
