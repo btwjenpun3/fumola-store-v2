@@ -224,13 +224,17 @@ class Produk extends Component
     }
 
     public function saveSetting()
-    {
-        $data = Game::where('id', $this->id)->first();
-        $gambar = $this->gambar_baru->storeAs('games', $data->slug . '.webp', 'public');
+    {               
         Game::where('id', $this->id)->update([
-            'url_gambar' => $gambar,
             'form' => $this->form
-        ]);     
+        ]);
+        if(isset($this->gambar_baru)) {
+            $data = Game::where('id', $this->id)->first(); 
+            $gambar = $this->gambar_baru->storeAs('games', $data->slug . '.webp', 'public');
+            $data->update([
+                'url_gambar' => $gambar
+            ]);
+        } 
         $this->dispatch('berhasil', 'Ubah Setting berhasil');
         $this->dispatch('close-setting-modal');
     }
