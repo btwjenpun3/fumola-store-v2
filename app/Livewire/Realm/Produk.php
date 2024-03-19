@@ -3,6 +3,7 @@
 namespace App\Livewire\Realm;
 
 use App\Http\Controllers\RedisController;
+use App\Jobs\GenerateMock;
 use App\Models\Game;
 use App\Models\Harga;
 use Livewire\Component;
@@ -71,10 +72,12 @@ class Produk extends Component
         switch ($status) {
             case 1:
                 Game::where('id', $id)->update(['status' => 1]);
+                dispatch(new GenerateMock);
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             case 0:
                 Game::where('id', $id)->update(['status' => 0]);
+                dispatch(new GenerateMock);
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             default:
