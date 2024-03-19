@@ -365,45 +365,54 @@
         wire:ignore.self>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Setting - {{ $produk_form }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div wire:target="setting" wire:loading>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar progress-bar-indeterminate"></div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="w-8 col-md-6">
-                                    <img src="{{ asset(Storage::url($gambar)) }}">
+                <div wire:target="setting" wire:loading.remove>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Setting - {{ $produk_form }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="w-8 col-md-6">
+                                        <img src="{{ asset(Storage::url($gambar)) }}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label required">Upload Gambar</label>
+                                        <input type="file"
+                                            class="form-control @error('gambar_baru') is-invalid @enderror"
+                                            wire:model="gambar_baru">
+                                        @error('gambar_baru')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label required">Upload Gambar</label>
-                                    <input type="file"
-                                        class="form-control @error('gambar_baru') is-invalid @enderror"
-                                        wire:model="gambar_baru">
-                                    @error('gambar_baru')
+                                <div class="col-md-12 mt-3">
+                                    <label class="form-label required">Jumlah Form</label>
+                                    <select class="form-select @error('form') is-invalid @enderror"
+                                        wire:model="form">
+                                        <option value="">-- Pilih --</option>
+                                        <option value="1">1 Form (User ID)</option>
+                                        <option value="2">2 Form (User ID dan Server ID)</option>
+                                    </select>
+                                    @error('form')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="form-label required">Jumlah Form</label>
-                                <select class="form-select @error('form') is-invalid @enderror" wire:model="form">
-                                    <option value="">-- Pilih --</option>
-                                    <option value="1">1 Form (User ID)</option>
-                                    <option value="2">2 Form (User ID dan Server ID)</option>
-                                </select>
-                                @error('form')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" wire:click="saveSetting"
-                        wire:loading.attr="disabled">Simpan</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" wire:click="saveSetting"
+                            wire:loading.attr="disabled">Simpan</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -434,6 +443,9 @@
             })
             $wire.on('open-update-modal', () => {
                 $('#update-modal').modal('show');
+            })
+            $wire.on('close-setting-modal', () => {
+                $('#setting-modal').modal('show');
             })
         </script>
     @endscript

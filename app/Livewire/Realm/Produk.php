@@ -232,6 +232,7 @@ class Produk extends Component
             'form' => $this->form
         ]);     
         $this->dispatch('berhasil', 'Ubah Setting berhasil');
+        $this->dispatch('close-setting-modal');
     }
 
     public function render()
