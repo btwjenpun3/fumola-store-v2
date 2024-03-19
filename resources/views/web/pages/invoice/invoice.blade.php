@@ -253,7 +253,7 @@
         window.Echo.channel('topup-{{ $data->nomor_invoice }}')
             .listen('TopUpEvent', (event) => {
                 Toastify({
-                    text: event,
+                    text: event.message,
                     close: true,
                     gravity: "top",
                     position: "right",
