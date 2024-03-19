@@ -26,7 +26,7 @@ class QrSimulate extends Component
             'amount' => $data->total
         ]);
 
-        dd($response->toJson());
+        dd($response->json());
     }
 
     public function render()
