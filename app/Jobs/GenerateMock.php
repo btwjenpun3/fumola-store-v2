@@ -40,7 +40,7 @@ class GenerateMock implements ShouldQueue
                 'title' => $g->nama,
                 'production' => $g->brand,
                 'image' => asset(Storage::url($g->url_gambar)),
-                'url' => '/top-up/' . $g->slug
+                'url' => env('APP_URL') . '/top-up/' . $g->slug
             ];
             if($g->kategori === 'Games') {            
                 $game[] = [
@@ -48,7 +48,7 @@ class GenerateMock implements ShouldQueue
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/top-up/' . $g->slug
+                    'url' => env('APP_URL') . '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Voucher') {          
                 $voucher[] = [
@@ -56,7 +56,7 @@ class GenerateMock implements ShouldQueue
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/top-up/' . $g->slug
+                    'url' => env('APP_URL') . '/top-up/' . $g->slug
                 ];
             } elseif ($g->kategori === 'Pulsa') {          
                 $pulsa[] = [
@@ -64,7 +64,7 @@ class GenerateMock implements ShouldQueue
                     'title' => $g->nama,
                     'production' => $g->brand,
                     'image' => asset(Storage::url($g->url_gambar)),
-                    'url' => '/top-up/' . $g->slug
+                    'url' => env('APP_URL') . '/top-up/' . $g->slug
                 ];
             }
         } 
