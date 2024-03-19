@@ -72,12 +72,12 @@ class Produk extends Component
         switch ($status) {
             case 1:
                 Game::where('id', $id)->update(['status' => 1]);
-                dispatch(new GenerateMock());
+                $this->generateMock();
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             case 0:
                 Game::where('id', $id)->update(['status' => 0]);
-                dispatch(new GenerateMock());
+                $this->generateMock();
                 $this->dispatch('berhasil', 'Ubah Status Berhasil');
                 break;
             default:
@@ -251,5 +251,68 @@ class Produk extends Component
                             return $data->harga;
                         })
         ]);
+    }
+
+    public function generateMock()
+    {
+        $data = Game::orderBy('nama', 'asc')->where('status', 1)->get();
+        $path = public_path('mock/categories.json');
+        $mock = [];  
+        $all = []; 
+        $game = [];  
+        $pulsa = [];
+        $voucher = [];  
+        foreach($data as $g) {
+            $all[] = [
+                '_id' => $g->id,
+                'title' => $g->nama,
+                'production' => $g->brand,
+                'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                'url' => '/top-up/' . $g->slug
+            ];
+            if($g->kategori === 'Games') {            
+                $game[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'url' => '/top-up/' . $g->slug
+                ];
+            } elseif ($g->kategori === 'Voucher') {          
+                $voucher[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'url' => '/top-up/' . $g->slug
+                ];
+            } elseif ($g->kategori === 'Pulsa') {          
+                $pulsa[] = [
+                    '_id' => $g->id,
+                    'title' => $g->nama,
+                    'production' => $g->brand,
+                    'image' => 'https://demo.fumolastore.id/' . $g->url_gambar,
+                    'url' => '/top-up/' . $g->slug
+                ];
+            }
+        } 
+        $mock[] = [
+            '_id' => 1,
+            'all' => $all
+        ]; 
+        $mock[] = [
+            '_id' => 2,
+            'mlbb' => $game
+        ];
+        $mock[] = [
+            '_id' => 3,
+            'mobile' => $voucher
+        ];
+        $mock[] = [
+            '_id' => 4,
+            'pc' => $pulsa
+        ];          
+        $jsonData = json_encode($mock, JSON_PRETTY_PRINT);   
+        file_put_contents($path, $jsonData);
     }
 }
