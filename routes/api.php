@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\DigiflazzController;
+use App\Http\Controllers\Api\XenditController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/xendit/callback/ewallet', [XenditController::class, 'handleCallBackEWallet']);
+
+Route::post('/xendit/callback/qris', [XenditController::class, 'handleCallBackQris']);
+
+Route::post('/xendit/callback/va', [XenditController::class, 'handleCallBackVa']);
+
+Route::post('/xendit/callback/outlet', [XenditController::class, 'handleCallBackOutlet']);
+
+Route::post('/digiflazz/callback', [DigiflazzController::class, 'handleCallBack']);

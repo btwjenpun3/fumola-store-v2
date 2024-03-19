@@ -234,5 +234,33 @@
             </div>
         </div>
     </section>
-    <!-- Checkout Section End -->
+@endsection
+
+@section('js')
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.11.2/dist/echo.iife.js"></script>
+    <script>
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('d4afa1b27ea54cbf1546', {
+            cluster: 'ap1'
+        });
+        window.Echo = new Echo({
+            broadcaster: 'pusher',
+            key: 'd4afa1b27ea54cbf1546',
+            cluster: 'ap1'
+        });
+        window.Echo.channel('topup-{{ $data->nomor_invoice }}')
+            .listen('TopUpEvent', (event) => {
+                Toastify({
+                    text: event,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                        background: "green",
+                    }
+                }).showToast();
+            });
+    </script>
 @endsection
