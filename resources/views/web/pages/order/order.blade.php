@@ -27,18 +27,19 @@
                                     class="h-32 overflow-hidden prose prose-headings:m-0 prose-h1:text-base prose-h2:text-base prose-h3:text-sm prose-h4:text-sm prose-p:m-0 prose-p:text-xs prose-li:m-0 prose-li:text-xs">
                                     <p class="text-white !my-2">Cara Pesan Top Up {{ $game->nama }} Murah dan Cepat :</p>
                                     <ol class="m-0">
-                                        <li class="text-white">Masukkan ID &amp; Server</li>
-                                        <li class="text-white">Pilih Item</li>
-                                        <li class="text-white">Pilih Pembayaran</li>
-                                        <li class="text-white">Masukkan No WhatsApp</li>
-                                        <li class="text-white">Klik Konfirmasi Top Up &amp; lakukan Pembayaran
-                                        </li>
-                                        <li class="text-white">Diamonds otomatis masuk ke akun game</li>
+                                        @foreach ($game->methods as $method)
+                                            <li class="text-white">{{ $method->method }}</li>
+                                        @endforeach
                                     </ol>
                                 </article>
                             </div>
                             <span class="cursor-pointer text-xs font-medium text-blue-600 underline">Lebih
-                                banyak</span>
+                                banyak
+                            </span>
+                            <article
+                                class="h-32 overflow-hidden prose prose-headings:m-0 prose-h1:text-base prose-h2:text-base prose-h3:text-sm prose-h4:text-sm prose-p:m-0 prose-p:text-xs prose-li:m-0 prose-li:text-xs">
+
+                            </article>
                         </article>
                     </aside>
                 </div>

@@ -11,6 +11,7 @@
                         <th class="w-1"></th>
                         <th class="w-1"></th>
                         <th class="w-1"></th>
+                        <th class="w-1"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,21 @@
                                         wire:click="status({{ $p->id }}, {{ $p->status === 1 ? 0 : 1 }})"
                                         wire:loading.attr="disabled">
                                 </label>
+                            </td>
+                            <td>
+                                <button class="btn btn-icon" data-bs-toggle="modal" data-bs-target="#method-modal"
+                                    wire:click="method({{ $p->id }})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-info-octagon">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" />
+                                        <path d="M12 9h.01" />
+                                        <path d="M11 12h1v4h1" />
+                                    </svg>
+                                </button>
                             </td>
                             <td>
                                 <button class="btn btn-icon" data-bs-toggle="modal" data-bs-target="#setting-modal"
@@ -100,6 +116,7 @@
                                     <thead>
                                         <tr>
                                             <th class="w-1"></th>
+                                            <th class="w-7"></th>
                                             <th>Denom</th>
                                             <th>Tipe</th>
                                             <th>Kode Produk</th>
@@ -111,6 +128,7 @@
                                             <th>Profit dari Reseller</th>
                                             <th>Start Cut Off</th>
                                             <th>End Cut Off</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -130,10 +148,12 @@
                                                             <span class="badge bg-danger me-1"></span>
                                                         @endif
                                                     </td>
+                                                    <td>
+                                                        <img src="{{ asset(Storage::url($h->gambar)) }}">
+                                                    </td>
                                                     <td>{{ $h->nama_produk }}</td>
                                                     <td>
-                                                        <select class="form-select"
-                                                            wire:model="tipe.{{ $h->id }}"
+                                                        <select class="form" wire:model="tipe.{{ $h->id }}"
                                                             wire:change="updateTipe({{ $h->id }})"
                                                             wire:loading.attr="disabled">
                                                             <option value="Umum">Umum</option>
@@ -183,6 +203,24 @@
                                                                 wire:click="ubahStatusHarga({{ $h->id }}, {{ $h->status === 1 ? 0 : 1 }})"
                                                                 wire:loading.attr="disabled">
                                                         </label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" id="actual-btn"
+                                                            wire:model="gambarHarga" hidden />
+                                                        <button wire:click="showFileInput({{ $h->id }})"
+                                                            class="btn btn-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="icon icon-tabler icons-tabler-outline icon-tabler-upload">
+                                                                <path stroke="none" d="M0 0h24v24H0z"
+                                                                    fill="none" />
+                                                                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                                                <path d="M7 9l5 -5l5 5" />
+                                                                <path d="M12 4l0 12" />
+                                                            </svg>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -363,7 +401,7 @@
 
     <div class="modal modal-blur fade" id="setting-modal" tabindex="-1" role="dialog" aria-hidden="true"
         wire:ignore.self>
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div wire:target="setting" wire:loading>
                     <div class="progress progress-sm">
@@ -418,6 +456,61 @@
         </div>
     </div>
 
+    {{-- Modal Method --}}
+
+    <div class="modal modal-blur fade" id="method-modal" tabindex="-1" role="dialog" aria-hidden="true"
+        wire:ignore.self>
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div wire:target="setting" wire:loading>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar progress-bar-indeterminate"></div>
+                    </div>
+                </div>
+                <div wire:target="setting" wire:loading.remove>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Atur Method</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <label class="form-label required">Cara Top Up</label>
+                                    <div class="row">
+                                        @foreach ($methods as $key => $method)
+                                            <div class="col-md-9 mt-2" wire:key="method-{{ $key }}">
+                                                <input type="text"
+                                                    class="form-control form-control-sm @error('methods.{{ $key }}') is-invalid @enderror"
+                                                    wire:model="methods.{{ $key }}">
+                                                @error('methods.{{ $key }}')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-3">
+                                                @if ($loop->last)
+                                                    <div class="col-md-3">
+                                                        <button class="btn-link" wire:click="addMethod">Add</button>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" wire:click="saveMethod"
+                            wire:loading.attr="disabled">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     @script
         <script>
@@ -446,7 +539,10 @@
             })
             $wire.on('close-setting-modal', () => {
                 $('#setting-modal').modal('show');
-            })
+            });
+            $wire.on('showFileInput', () => {
+                document.getElementById('actual-btn').click();
+            });
         </script>
     @endscript
 </div>

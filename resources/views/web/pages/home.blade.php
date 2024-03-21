@@ -6,16 +6,13 @@
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide lg:w-[1000px]">
-                        <img src="/web/img/banner.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
+                        <img src="/web/img/banner-puasa.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
                     </div>
                     <div class="swiper-slide lg:w-[1000px]">
-                        <img src="/web/img/banner.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
+                        <img src="/web/img/banner-1.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
                     </div>
                     <div class="swiper-slide lg:w-[1000px]">
-                        <img src="/web/img/banner.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
-                    </div>
-                    <div class="swiper-slide lg:w-[1000px]">
-                        <img src="/web/img/banner.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
+                        <img src="/web/img/banner-2.webp" class="block h-auto w-full rounded-3xl" alt="banner" />
                     </div>
                 </div>
             </div>
@@ -32,11 +29,14 @@
                         class="h-6 w-6 animate-flicker md:h-8 md:w-8" height="1em" width="1em"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z">
+                            d=" M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7
+                                                                                                                                                                                                                9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z">
                         </path>
                     </svg>
-                    <span class="text-xl lg:text-2xl font-semibold uppercase leading-[26px] tracking-[0.2em]">Flash
-                        Sale</span>
+                    <span class="text-xl lg:text-2xl font-semibold uppercase leading-[26px] tracking-[0.2em]">
+                        Flash
+                        Sale
+                    </span>
                 </div>
             </div>
             <div class="relative bg-secondary-900 rounded-xl px-3 py-5 md:px-6 md:py-8 overflow-hidden">

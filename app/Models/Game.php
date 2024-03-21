@@ -25,5 +25,10 @@ class Game extends Model
     {
         return $this->hasMany(Customer::class);
     }
+
+    public function methods()
+    {
+        return $this->hasMany(GameMethod::class, 'game_id');
+    }
     
 }

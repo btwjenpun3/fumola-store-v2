@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Realm;
 
+use Carbon\Carbon;
 use App\Http\Controllers\RedisController;
 use App\Jobs\GenerateMock;
 use App\Models\Game;
@@ -14,6 +15,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
+use App\Models\GameMethod;
 
 class Produk extends Component
 {
@@ -28,6 +30,9 @@ class Produk extends Component
     #[Validate('mimes:webp,png|max:128')]
     public $gambar_baru;
 
+    public $id_gambar;
+    public $gambarHarga;
+
     public $tipe = [];
 
     public $modal = [];
@@ -38,6 +43,18 @@ class Produk extends Component
     public $reseller = [];   
     
     public $sync;
+
+    public $methods = [];    
+
+    public function mount()
+    {
+        $this->methods[] = '';
+    }
+
+    public function addMethod()
+    {
+        $this->methods[] = '';
+    }
 
     public function save()
     {
@@ -146,6 +163,26 @@ class Produk extends Component
         }
     }
 
+    public function showFileInput($id)
+    {
+        $this->id_gambar = $id;
+        $this->dispatch('showFileInput');
+    }
+
+    public function updatedGambarHarga()
+    {
+        try {
+            $carbon = Carbon::now();
+            $gambar = $this->gambarHarga->store('produk/' . $carbon->year . '/' . $carbon->month, 'public');
+            Harga::where('id', $this->id_gambar)->update([
+            'gambar' => $gambar
+        ]);
+        $this->dispatch('berhasil', 'Upload Berhasil');        
+        } catch (\Exception $e) {
+            $this->dispatch('berhasil', $e->getMessage());
+        }              
+    }
+
     public function sinkronisasi()
     {
         try {
@@ -218,20 +255,51 @@ class Produk extends Component
         }
     }
 
+    public function method($id)
+    {
+        $data = Game::where('id', $id)->first();
+        $this->id = $data->id;
+        if(count($data->methods)) {
+            $this->reset('methods');
+            foreach($data->methods as $d) {
+                $this->methods[$d->id] = $d->method;
+            } 
+        } else {                
+            $this->reset('methods');
+            $this->addMethod();
+        } 
+    }
+
+    public function saveMethod()
+    {
+        $data = GameMethod::where('game_id', $this->id)->get();
+        if(count($data) > 0) {
+            
+        } else {
+            foreach($this->methods as $method) {
+                GameMethod::create([
+                    'game_id' => $this->id,
+                    'method' => $method
+                ]);
+            }
+            $this->dispatch('berhasil', 'Ubah Method berhasil');
+        } 
+    }
+
     public function setting($id)
     {
         $data = Game::where('id', $id)->first();
         $this->id = $id;
         $this->form = $data->form;   
         $this->produk_form = $data->nama;    
-        $this->gambar = $data->url_gambar; 
+        $this->gambar = $data->url_gambar;               
     }
 
     public function saveSetting()
     {               
-        Game::where('id', $this->id)->update([
+        $data = Game::where('id', $this->id)->update([
             'form' => $this->form
-        ]);
+        ]);                   
         if(isset($this->gambar_baru)) {
             $data = Game::where('id', $this->id)->first(); 
             $gambar = $this->gambar_baru->storeAs('games', $data->slug . '.webp', 'public');

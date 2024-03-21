@@ -18,7 +18,7 @@ class Nominal extends Component
     {
         $call = new GlobalController();
         return view('livewire.web.order.nominal', [
-            'tipe' => $this->game->harga()->distinct()->pluck('tipe'),
+            'tipe' => $this->game->harga()->orderBy('tipe', 'desc')->distinct()->pluck('tipe'),
             'umum' => $this->game->harga->where('tipe', 'Umum')->where('status', 1),
             'membership' => $this->game->harga->where('tipe', 'Membership')->where('status', 1),
             'la1' => $this->game->harga->where('tipe', 'LifeAfter A')->where('status', 1),
