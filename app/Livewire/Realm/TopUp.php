@@ -96,7 +96,7 @@ class TopUp extends Component
                     $this->dispatch('error', 'Password Akun Realm Kamu Salah!');
                     $this->dispatch('topup-failed');
                     return;
-                } 
+                }                
                 
                 if (!$data || $data->status !== 1) {
                     $this->dispatch('error', 'Denom ini sedang Offline, silahkan pilih Denom yang lain');

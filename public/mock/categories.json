@@ -83,7 +83,7 @@
                 "_id": 2,
                 "title": "Free Fire",
                 "production": "FREE FIRE",
-                "image": "http:\/\/localhost:8000\/storage\/games\/free-fire.webp",
+                "image": "http:\/\/localhost:8000\/storage\/games\/freefire.webp",
                 "url": "\/top-up\/free-fire"
             },
             {
@@ -269,13 +269,6 @@
                 "url": "\/top-up\/smartfren"
             },
             {
-                "_id": 74,
-                "title": "StarMaker",
-                "production": "StarMaker",
-                "image": "http:\/\/localhost:8000\/storage\/games\/starmaker.webp",
-                "url": "\/top-up\/starmaker"
-            },
-            {
                 "_id": 50,
                 "title": "State of Survival",
                 "production": "State of Survival",
@@ -333,7 +326,7 @@
             },
             {
                 "_id": 27,
-                "title": "Undawn - All Bind",
+                "title": "Undawn - Bind Garena",
                 "production": "Undawn",
                 "image": "http:\/\/localhost:8000\/storage\/games\/undawn-all-bind.webp",
                 "url": "\/top-up\/undawn-all-bind"
@@ -445,7 +438,7 @@
                 "_id": 2,
                 "title": "Free Fire",
                 "production": "FREE FIRE",
-                "image": "http:\/\/localhost:8000\/storage\/games\/free-fire.webp",
+                "image": "http:\/\/localhost:8000\/storage\/games\/freefire.webp",
                 "url": "\/top-up\/free-fire"
             },
             {
@@ -596,13 +589,6 @@
                 "url": "\/top-up\/sky-children-of-the-light"
             },
             {
-                "_id": 74,
-                "title": "StarMaker",
-                "production": "StarMaker",
-                "image": "http:\/\/localhost:8000\/storage\/games\/starmaker.webp",
-                "url": "\/top-up\/starmaker"
-            },
-            {
                 "_id": 50,
                 "title": "State of Survival",
                 "production": "State of Survival",
@@ -639,7 +625,7 @@
             },
             {
                 "_id": 27,
-                "title": "Undawn - All Bind",
+                "title": "Undawn - Bind Garena",
                 "production": "Undawn",
                 "image": "http:\/\/localhost:8000\/storage\/games\/undawn-all-bind.webp",
                 "url": "\/top-up\/undawn-all-bind"

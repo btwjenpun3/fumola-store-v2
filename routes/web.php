@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 
  Route::get('/', function() {
     return view('web.pages.home');
- });
+ })->name('index');
 
  Route::prefix('/top-up')
     ->name('top-up.')

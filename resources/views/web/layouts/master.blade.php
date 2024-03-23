@@ -6,14 +6,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="VCASH merupakan platform layanan Top Up Game termurah dan terpercaya di Indonesia yang direkomendasikan Influencer Game &amp; Pro Player. Tersedia berbagai macam game untuk mempermudah transaksi pembelian. Pembelian instan langsung masuk tanpa registrasi." />
+    @yield('description')
     <meta name="keywords"
         content="top up game, top up, top up cepat, top up murah, top up termurah, mobile legends, free fire, pubg mobile, honkai, genshin, dragon nest" />
     <meta name="robots" content="index,follow" />
     <!-- Meta Tags End -->
     <!-- Web Title -->
-    <title>Topup Game Termurah, Cepat, dan Dijamin Aman | VCASH.ID</title>
+    @yield('title')
     <!-- Web Title End -->
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,6 +62,8 @@
         <!-- Content Product -->
         @yield('content')
         <!-- Content Product End -->
+
+        @yield('seo')
 
         <!-- Social Media Section -->
         @include('web.partials.social-media')

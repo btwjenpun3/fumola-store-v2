@@ -1303,8 +1303,7 @@
                     </svg>
                     <h3>Apa kamu yakin?</h3>
                     <div class="text-muted">Pastikan data yang kamu isi sudah benar, karena kami belum memiliki sistem
-                        untuk
-                        pengecekan UserID!</div>
+                        untuk pengecekan UserID!</div>
                 </div>
                 <div class="modal-footer">
                     <div class="w-100">
@@ -1342,7 +1341,7 @@
         </div>
     </div>
 
-    {{-- Modal Berhasil --}}
+    {{-- Modal Proses Buat Invoice --}}
 
     <div class="modal modal-blur fade" id="topup-success-modal" tabindex="-1" role="dialog" aria-hidden="true"
         data-bs-backdrop='static' wire:ignore.self>
@@ -1357,6 +1356,23 @@
                     <br>
                     <br>
                     <div class="spinner-grow text-green" role="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Proses Buat Invoice --}}
+
+    <div class="modal modal-blur fade" id="finish-success-modal" tabindex="-1" role="dialog" aria-hidden="true"
+        wire:ignore.self>
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-body text-center py-3">
+                    <img src="/web/img/illustrations/transaction-success.gif">
+                    <h3 class="text-success">
+                        Transaksi Selesai
+                    </h3>
+                    <span>Terimakasih banyak ^^</span>
                 </div>
             </div>
         </div>
@@ -1402,6 +1418,12 @@
                 .listen('TopUpEvent', (event) => {
                     $('#process-modal').modal('hide');
                     $('#topup-success-modal').modal('show');
+                });
+
+            window.Echo.channel('topup-success-{{ auth()->id() }}')
+                .listen('TopUpEventSuccess', (event) => {
+                    $('#topup-success-modal').modal('hide');
+                    $('#finish-success-modal').modal('show');
                 });
 
             window.Echo.channel('topup-failed-{{ auth()->id() }}')
