@@ -35,11 +35,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('web.pages.home');
 //  });
 
-// Route::get('/', [RedisController::class, 'webHomePage']);
+Route::get('/', [RedisController::class, 'webHomePage'])->name('index');
 
- Route::get('/', function() {
-    return view('web.pages.home');
- })->name('index');
+//  Route::get('/', function() {
+//     return view('web.pages.home');
+//  })->name('index');
 
  Route::prefix('/top-up')
     ->name('top-up.')
