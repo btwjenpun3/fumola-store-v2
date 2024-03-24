@@ -47,7 +47,7 @@
                             </td>
                             <td>
                                 <button class="btn btn-icon" data-bs-toggle="modal" data-bs-target="#method-modal"
-                                    wire:click="method({{ $p->id }})">
+                                    wire:click="showMethod({{ $p->id }})">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round"
@@ -469,42 +469,61 @@
                 </div>
                 <div wire:target="setting" wire:loading.remove>
                     <div class="modal-header">
-                        <h5 class="modal-title">Atur Method</h5>
+                        <h5 class="modal-title">Atur Method - {{ $infoGame }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="col-md-12">
-                                    <label class="form-label required">Cara Top Up</label>
-                                    <div class="row">
-                                        @foreach ($methods as $key => $method)
-                                            <div class="col-md-9 mt-2" wire:key="method-{{ $key }}">
-                                                <input type="text"
-                                                    class="form-control form-control-sm @error('methods.{{ $key }}') is-invalid @enderror"
-                                                    wire:model="methods.{{ $key }}">
-                                                @error('methods.{{ $key }}')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="col-md-3">
-                                                @if ($loop->last)
-                                                    <div class="col-md-3">
-                                                        <button class="btn-link" wire:click="addMethod">Add</button>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        @endforeach
+                            <label class="form-label required">Cara Top Up</label>
+                            <div class="row">
+                                @foreach ($methods as $key => $method)
+                                    <div class="col-md-10 mt-2" wire:key="method-{{ $key }}">
+                                        <input type="text"
+                                            class="form-control form-control-sm @error('methods.{{ $key }}') is-invalid @enderror"
+                                            wire:model="methods.{{ $key }}">
+                                        @error('methods.{{ $key }}')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+                                    <div class="col-md-2">
+                                        @if ($loop->last)
+                                            <div class="col-md-3">
+                                                <button class="btn-link" wire:click="addMethod">Add</button>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary mt-3 w-7" wire:click="saveMethod"
+                                    wire:loading.attr="disabled">
+                                    Simpan
+                                </button>
+                            </div>
+                            <div class="row mt-3">
+                                <label class="form-label required">Mini Instruksi</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" wire:model="miniInstruction">
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                @if (isset($miniInstruction))
+                                    <button type="button" class="btn btn-primary mt-3 w-7"
+                                        wire:click="updateMiniInstruction" wire:loading.attr="disabled">
+                                        Update
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-primary mt-3 w-7"
+                                        wire:click="saveMiniInstruction" wire:loading.attr="disabled">
+                                        Simpan
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" wire:click="saveMethod"
-                            wire:loading.attr="disabled">Simpan</button>
                     </div>
                 </div>
             </div>

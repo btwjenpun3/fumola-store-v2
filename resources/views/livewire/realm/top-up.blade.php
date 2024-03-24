@@ -1211,7 +1211,7 @@
 
                                     <div class="col-md-12 mt-3">
                                         <button id="btn-beli" class="btn btn-primary form-control"
-                                            data-bs-toggle="modal" data-bs-target="#modal-submit">
+                                            wire:click="confirm" wire:loading.attr="disabled">
                                             <span id="btn-text">Beli</span>
                                         </button>
                                     </div>
@@ -1404,7 +1404,9 @@
             $wire.on('topup-failed', () => {
                 $('#process-modal').modal('hide');
             });
-
+            $wire.on('process', () => {
+                $('#modal-submit').modal('show');
+            });
             Pusher.logToConsole = true;
             var pusher = new Pusher('d4afa1b27ea54cbf1546', {
                 cluster: 'ap1'

@@ -77,15 +77,20 @@ class TopUp extends Component
         $this->userNickname = $data->nickname;
         $this->dispatch('customer-fill');
     }
-
-    public function topup()
+    
+    public function confirm()
     {
         $this->validate([
             'productCode' => 'required',
             'userId' => 'required',
             'password' => 'required'
-        ]);        
-        try {               
+        ]); 
+        $this->dispatch('process');
+    }
+
+    public function topup()
+    {               
+        try {           
             // dispatch(new TopUpRealmJob(auth()->id(), auth()->user(), $this->password, $this->userId, $this->serverId, $this->userNickname, $this->productCode, $this->customerField));     
             $data = Harga::where('kode_produk', $this->productCode)->first();
             if ($data && $data->status === 1) {  
@@ -93,23 +98,25 @@ class TopUp extends Component
                 $user = auth()->user();
 
                 if (!Hash::check($this->password, $user->password)) {
+                    sleep(1);
                     $this->dispatch('error', 'Password Akun Realm Kamu Salah!');
                     $this->dispatch('topup-failed');
                     return;
                 }                
                 
                 if (!$data || $data->status !== 1) {
+                    sleep(1);
                     $this->dispatch('error', 'Denom ini sedang Offline, silahkan pilih Denom yang lain');
                     $this->dispatch('topup-failed');
                     return;
                 }
 
                 if ($user->role->name === 'reseller' && $user->saldo <= $data->harga_jual_reseller ) {
+                    sleep(1);
                         $this->dispatch('error', 'Saldo Kamu Kurang! Harap Recharge Saldo Kamu Lagi!');
                         $this->dispatch('topup-failed');
                         return; 
-                }
-                
+                }                
                 if (isset($this->customerField)) {
                     $customer_server = isset($this->serverId) ? $this->server_id : null;
                     $customer_nickname = isset($this->userNickname) ? $this->userNickname : null;

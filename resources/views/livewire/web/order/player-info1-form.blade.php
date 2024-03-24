@@ -32,10 +32,7 @@
             </div>
         </div>
         <p class="mt-2 text-xs text-white/70">
-            Untuk mengetahui User ID Anda, silakan klik menu profile dibagian kiri atas pada
-            menu utama game. User ID akan terlihat dibagian bawah Nama Karakter Game Anda.
-            Silakan masukkan User ID Anda untuk menyelesaikan transaksi. Contoh :
-            12345678(1234).
+            {{ isset($game->miniInstruction->mini_instruction) ? $game->miniInstruction->mini_instruction : '' }}
         </p>
     </section>
 </div>

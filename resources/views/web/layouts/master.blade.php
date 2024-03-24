@@ -21,10 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" />
     <!-- Google Fonts End -->
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/web/img/favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/web/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/web/img/favicon/favicon-16x16.png" />
-    <link rel="manifest" href="/web/img/favicon/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="https://fumolastore.id/storage/assets/favicon.ico">
     <!-- Favicon End -->
     <!-- Styles -->
     <link rel="stylesheet" href="/web/css/style.css" />
@@ -46,28 +43,28 @@
         <!-- Navigation End -->
 
         <!-- Main Content -->
+        <main class="relative">
+            <!-- Hero Section -->
+            @yield('slider')
+            <!-- Hero Section End -->
 
-        <!-- Hero Section -->
-        @yield('slider')
-        <!-- Hero Section End -->
+            <!-- Flash Sale Section -->
+            @yield('flash-sale')
+            <!-- Flash Sale Section End -->
 
-        <!-- Flash Sale Section -->
-        @yield('flash-sale')
-        <!-- Flash Sale Section End -->
+            <!-- Recommendation Section -->
+            @yield('recommendation')
+            <!-- Recommendation Section End -->
 
-        <!-- Recommendation Section -->
-        @yield('recommendation')
-        <!-- Recommendation Section End -->
+            <!-- Content Product -->
+            @yield('content')
+            <!-- Content Product End -->
 
-        <!-- Content Product -->
-        @yield('content')
-        <!-- Content Product End -->
+            @yield('seo')
 
-        @yield('seo')
-
-        <!-- Social Media Section -->
-        @include('web.partials.social-media')
-        <!-- Social Media Section End -->
+            <!-- Social Media Section -->
+            @include('web.partials.social-media')
+            <!-- Social Media Section End -->
 
         </main>
         <!-- Main Content End -->
@@ -88,11 +85,11 @@
     <!-- Call Center -->
     @include('web.partials.call-center')
     <!-- Call Center End -->
-    @livewireScripts
     <!-- Scripts -->
     <script src="/web/js/scripts.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     @yield('js')
+    @livewireScripts
     <!-- Scripts End -->
 </body>
 

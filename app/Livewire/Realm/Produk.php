@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use App\Models\GameMethod;
+use App\Models\GameMiniInstruction;
 
 class Produk extends Component
 {
@@ -44,7 +45,10 @@ class Produk extends Component
     
     public $sync;
 
-    public $methods = [];    
+    public $infoGame;
+    public $methods = []; 
+    
+    public $miniInstruction;
 
     public function mount()
     {
@@ -255,10 +259,12 @@ class Produk extends Component
         }
     }
 
-    public function method($id)
+    public function showMethod($id)
     {
         $data = Game::where('id', $id)->first();
         $this->id = $data->id;
+        $this->infoGame = $data->nama;
+        $this->miniInstruction = isset($data->miniInstruction->mini_instruction) ? $data->miniInstruction->mini_instruction : null;
         if(count($data->methods)) {
             $this->reset('methods');
             foreach($data->methods as $d) {
@@ -284,6 +290,23 @@ class Produk extends Component
             }
             $this->dispatch('berhasil', 'Ubah Method berhasil');
         } 
+    }
+
+    public function updateMiniInstruction()
+    {
+        GameMiniInstruction::where('game_id', $this->id)->update([
+            'mini_instruction' => $this->miniInstruction
+        ]);
+        $this->dispatch('berhasil', 'Update Mini Instruction berhasil');
+    }
+
+    public function saveMiniInstruction()
+    {
+        GameMiniInstruction::create([
+            'game_id' => $this->id,
+            'mini_instruction' => $this->miniInstruction
+        ]);
+        $this->dispatch('berhasil', 'Ubah Mini Instruction berhasil');
     }
 
     public function setting($id)

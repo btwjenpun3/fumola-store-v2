@@ -30,5 +30,10 @@ class Game extends Model
     {
         return $this->hasMany(GameMethod::class, 'game_id');
     }
+
+    public function miniInstruction()
+    {
+        return $this->hasOne(GameMiniInstruction::class, 'game_id');
+    }
     
 }

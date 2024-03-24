@@ -3,8 +3,8 @@
         <div class="inline-flex items-center">
             <!-- Brand -->
             <a href="/" class="inline-block">
-                <img src="/web/img/vcash-logo.webp" class="w-12 h-10 object-contain object-center" width="50"
-                    height="40" alt="VCASH.ID LOGO" />
+                <img src="/web/img/logo-header.webp" class="w-12 h-10 object-contain object-center" width="50"
+                    height="40" alt="Fumola Store Logo" />
             </a>
             <!-- Brand End -->
         </div>
@@ -52,8 +52,8 @@
                 class="h-full w-full rounded-full whitespace-nowrap border border-transparent bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-primary-600 to-primary-800 px-6 py-3.5 text-sm font-semibold leading-4 text-white shadow-sm">
                 Daftar Sekarang
             </a>
-            <a href="/login.html"
-                class="h-full w-full rounded-full whitespace-nowrap border border-transparent bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-secondary-500 to-secondary-800 px-6 py-3.5 text-sm font-semibold leading-4 text-white shadow-sm">
+            <a href="{{ route('auth.login') }}"
+                class="h-full w-full rounded-full whitespace-nowrap border border-transparent bg-green-200 from-secondary-500 to-secondary-800 px-6 py-3.5 text-sm font-semibold leading-4 text-white shadow-sm">
                 Masuk
             </a>
         </div>

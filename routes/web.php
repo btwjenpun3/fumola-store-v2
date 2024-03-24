@@ -13,6 +13,7 @@ use App\Http\Controllers\Realm\TopUpController;
 use App\Http\Controllers\Realm\TransaksiController;
 use App\Http\Controllers\Realm\UserController;
 use App\Http\Controllers\RedisController;
+use App\Http\Controllers\Web\GabungResellerController;
 use App\Http\Controllers\Web\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,13 @@ Route::prefix('/invoice')
     ->controller(InvoiceWeb::class)
     ->group(function () {
         Route::get('/{id}', 'index')->name('index');
+    });
+
+Route::prefix('/gabung-reseller')
+    ->name('gabung.reseller.')
+    ->controller(GabungResellerController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
     });
 
 

@@ -37,7 +37,7 @@
                         class="flex w-full items-center justify-between px-4 py-2.5 text-left text-base font-medium !bg-[#1c2025] text-white hover:bg-[#1c2025]"
                         data-accordion-target="#ewallet-accordion-body" aria-expanded="false"
                         aria-controls="ewallet-accordion-body">
-                        <span>eWallet</span>
+                        <span>QRIS / e-Wallet</span>
                         <svg data-accordion-icon class="h-6 w-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
